@@ -5,6 +5,7 @@ import { ArrowLeft, ArrowUpRight, Smartphone, Sparkles } from 'lucide-react'
 import { getCategoryBySlug } from '@/data/categories'
 import { projects, type Project } from '@/data/projects'
 import { showcase, showcaseSrc } from '@/data/showcase'
+import { moreWorkSections, totalMoreWorkProjects } from '@/data/moreWork'
 import { TransitionLink } from '@/components/PageTransition'
 import { useDocumentTitle } from '@/hooks/useDocumentTitle'
 import { useOffscreenPause } from '@/hooks/useOffscreenPause'
@@ -71,6 +72,8 @@ export function WorkCategoryPage() {
           >
             {category.isAppCategory
               ? 'Mobile Applications'
+              : category.slug === 'more-of-our-work'
+              ? `${totalMoreWorkProjects}+ Delivered Works`
               : category.isComingSoon
               ? 'Coming Soon'
               : `${categoryProjects.length} Verified Works`}
@@ -104,7 +107,9 @@ export function WorkCategoryPage() {
 
       {/* ── Works ─────────────────────────────────────────── */}
       <div className="gutter">
-        {category.isComingSoon ? (
+        {category.slug === 'more-of-our-work' ? (
+          <MoreWorkGrid />
+        ) : category.isComingSoon ? (
           <ComingSoonState />
         ) : category.isAppCategory ? (
           <MobileAppsGallery projects={categoryProjects} />
@@ -362,6 +367,87 @@ function MobileAppsGallery({ projects }: { projects: Project[] }) {
             </TransitionLink>
           )
         })}
+      </div>
+    </div>
+  )
+}
+
+/* ── More of our Work — categorised grid ─────────────────────────────── */
+
+function MoreWorkGrid() {
+  return (
+    <div>
+      {moreWorkSections.map((section, sIdx) => (
+        <div key={section.page} className={cn(sIdx > 0 && 'mt-20 pt-16 border-t border-line')}>
+          {/* Page label */}
+          <div className="flex items-center justify-between gap-4 mb-5">
+            <div className="flex items-center gap-2.5 font-mono text-[0.68rem] uppercase tracking-widest text-muted">
+              <span>Selected Work</span>
+              <span className="h-px w-3 bg-line" aria-hidden="true" />
+              <span>{section.label}</span>
+            </div>
+            <span className="font-mono text-[0.68rem] uppercase tracking-widest text-accent">
+              {section.page} of {section.totalPages}
+            </span>
+          </div>
+
+          <h3 className="text-[clamp(1.8rem,3.4vw,2.8rem)] font-semibold tracking-[-0.04em] leading-[1.1] text-ink mb-10">
+            {section.heading}
+          </h3>
+
+          {/* 4-column category grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 lg:gap-x-10 items-start">
+            {section.columns.map((column, colIdx) => (
+              <div key={colIdx} className="flex flex-col">
+                {column.map((cat, catIdx) => (
+                  <div key={cat.title} className={cn('pb-8', catIdx > 0 && 'pt-2')}>
+                    <div className="h-px bg-ink/12 mb-3.5" aria-hidden="true" />
+                    <h4 className="font-mono text-[0.65rem] font-bold uppercase tracking-[0.08em] text-accent mb-3 leading-snug">
+                      {cat.title}
+                    </h4>
+                    <ul className="space-y-1.5">
+                      {cat.projects.map((p) => (
+                        <li key={p.name}>
+                          {p.url && p.url !== '#' ? (
+                            <a
+                              href={p.url}
+                              target="_blank"
+                              rel="noreferrer"
+                              className="inline-block py-0.5 text-[0.84rem] leading-snug text-ink underline underline-offset-[3px] decoration-ink/20 transition-colors duration-300 hover:text-accent hover:decoration-accent/50"
+                            >
+                              {p.name}
+                            </a>
+                          ) : (
+                            <span className="inline-block py-0.5 text-[0.84rem] leading-snug text-ink">
+                              {p.name}
+                            </span>
+                          )}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+
+      {/* Footer — note + CTA */}
+      <div className="mt-14 border-t border-line pt-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+        <p className="text-[0.8rem] text-muted italic">
+          A selection from 1000+ businesses served. Many more websites delivered across these and other industries.
+        </p>
+        <TransitionLink
+          to="/#contact"
+          className="group flex shrink-0 items-center justify-center size-14 rounded-full border-2 border-ink/15 transition-all duration-500 ease-[var(--ease-expo)] hover:border-accent hover:bg-accent hover:scale-110 hover:shadow-[0_12px_32px_-6px_rgba(242,87,28,0.4)]"
+          aria-label="Get in touch"
+        >
+          <ArrowUpRight
+            className="size-4.5 text-ink/40 transition-all duration-500 ease-[var(--ease-expo)] group-hover:text-on-accent group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+            strokeWidth={1.75}
+          />
+        </TransitionLink>
       </div>
     </div>
   )

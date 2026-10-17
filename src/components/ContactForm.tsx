@@ -22,12 +22,15 @@ const ENDPOINT = import.meta.env.VITE_CONTACT_ENDPOINT as string | undefined
 
 function validate(v: Values): Errors {
   const e: Errors = {}
-  if (!v.name.trim()) e.name = 'Please tell us your name.'
-  if (!v.email.trim()) e.email = 'We need an email to reply.'
-  else if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.email)) e.email = 'That email doesn’t look right.'
-  if (v.phone && !/^[+()\d\s-]{7,20}$/.test(v.phone)) e.phone = 'Use digits, spaces, + or -.'
-  if (!v.projectType) e.projectType = 'Pick the closest match.'
-  if (v.message.trim().length < 10) e.message = 'A sentence or two about the project helps.'
+  if (!v.name.trim()) e.name = "Please tell us your name."
+  else if (v.name.length > 30) e.name = "Name must be 30 characters or less."
+  if (!v.email.trim()) e.email = "We need an email to reply."
+  else if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.email)) e.email = "That email doesn’t look right."
+  if (v.phone && !/^[+()\d\s-]{7,15}$/.test(v.phone)) e.phone = "Max 15 digits allowed."
+  if (v.company && v.company.length > 50) e.company = "Company must be 50 characters or less."
+  if (!v.projectType) e.projectType = "Pick the closest match."
+  if (!v.message.trim()) e.message = "Tell us a bit about the project."
+  else if (v.message.length > 500) e.message = "Description must be 500 characters or less."
   return e
 }
 
@@ -138,11 +141,11 @@ export function ContactForm() {
 
         {/* form */}
         <form noValidate onSubmit={onSubmit} className="lg:col-span-7 lg:col-start-6" aria-describedby="form-status">
-          <div className="grid gap-x-8 gap-y-2 md:grid-cols-2">
-            <Field label="Name" name="name" autoComplete="name" required value={values.name} onValue={set('name')} error={errors.name} />
+          <div className="grid gap-x-10 gap-y-1 md:grid-cols-2">
+            <Field label="Name" name="name" autoComplete="name" required maxLength={30} value={values.name} onValue={set('name')} error={errors.name} />
             <Field label="Email" name="email" type="email" autoComplete="email" required value={values.email} onValue={set('email')} error={errors.email} />
-            <Field label="Phone" name="phone" type="tel" autoComplete="tel" value={values.phone} onValue={set('phone')} error={errors.phone} />
-            <Field label="Company" name="company" autoComplete="organization" value={values.company} onValue={set('company')} />
+            <Field label="Phone (optional)" name="phone" type="tel" autoComplete="tel" maxLength={15} value={values.phone} onValue={set('phone')} error={errors.phone} />
+            <Field label="Company (optional)" name="company" autoComplete="organization" maxLength={50} value={values.company} onValue={set('company')} />
           </div>
 
           <fieldset className="mt-10">
@@ -183,6 +186,7 @@ export function ContactForm() {
               name="message"
               multiline
               required
+              maxLength={500}
               value={values.message}
               onValue={set('message')}
               error={errors.message}
@@ -254,28 +258,45 @@ function Field({ label, name, value, onValue, error, multiline, required, ...res
     'aria-invalid': !!error,
     'aria-describedby': error ? errId : undefined,
     className:
-      'peer block w-full resize-none bg-transparent pb-3 pt-7 text-lg outline-none placeholder-transparent focus-visible:outline-none',
+      'peer block w-full resize-none bg-transparent pb-4 pt-8 text-[1.12rem] font-medium tracking-[-0.015em] text-ink outline-none placeholder-transparent selection:bg-accent/15 selection:text-ink autofill:shadow-[inset_0_0_0px_1000px_var(--color-paper)] autofill:[-webkit-text-fill-color:var(--color-ink)] focus-visible:outline-none',
   }
   return (
     <div className="relative">
-      {multiline ? (
-        <textarea {...shared} rows={4} onChange={(e) => onValue(e.target.value)} />
-      ) : (
-        <input {...shared} {...rest} onChange={(e) => onValue(e.target.value)} />
-      )}
-      <label
-        htmlFor={id}
-        className="type-meta pointer-events-none absolute left-0 top-7 origin-left text-muted transition-all duration-500 ease-[var(--ease-expo)] peer-focus:top-1 peer-focus:text-accent peer-[:not(:placeholder-shown)]:top-1"
+      <div
+        className={cn(
+          'relative rounded-lg px-4',
+        )}
       >
-        {label}
-        {required && <span className="text-accent"> *</span>}
-      </label>
-      <span className={cn('absolute bottom-0 left-0 h-px w-full', error ? 'bg-red-500' : 'bg-line')} aria-hidden="true" />
-      <span
-        className="absolute bottom-0 left-0 h-px w-full origin-left scale-x-0 bg-accent transition-transform duration-700 ease-[var(--ease-expo)] peer-focus:scale-x-100"
-        aria-hidden="true"
-      />
-      <p id={errId} className={cn('min-h-6 pt-1.5 text-sm text-red-600', !error && 'invisible')}>
+        {multiline ? (
+          <textarea {...shared} rows={4} onChange={(e) => onValue(e.target.value)} />
+        ) : (
+          <input {...shared} {...rest} onChange={(e) => onValue(e.target.value)} />
+        )}
+        <label
+          htmlFor={id}
+          className={cn(
+            'type-meta pointer-events-none absolute left-4 origin-left transition-all duration-500 ease-[var(--ease-expo)]',
+            'top-[1.85rem] text-muted',
+            'peer-focus:top-2.5 peer-focus:text-[0.6rem] peer-focus:text-accent',
+            'peer-[:not(:placeholder-shown)]:top-2.5 peer-[:not(:placeholder-shown)]:text-[0.6rem]',
+          )}
+        >
+          {label}
+          {required && <span className="text-accent"> *</span>}
+        </label>
+        <span
+          className={cn(
+            'absolute bottom-0 left-0 h-[1.5px] w-full rounded-full transition-colors duration-300',
+            error ? 'bg-red-500' : 'bg-ink/12',
+          )}
+          aria-hidden="true"
+        />
+        <span
+          className="absolute bottom-0 left-0 h-[1.5px] w-full origin-left scale-x-0 rounded-full bg-accent transition-transform duration-700 ease-[var(--ease-expo)] peer-focus:scale-x-100"
+          aria-hidden="true"
+        />
+      </div>
+      <p id={errId} className={cn('min-h-5 px-4 pt-1.5 text-[0.78rem] text-red-600', !error && 'invisible')}>
         {error ?? '·'}
       </p>
     </div>

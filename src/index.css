@@ -403,6 +403,31 @@
   -webkit-text-stroke: max(2px, 0.022em) var(--color-paper);
 }
 
+/* Scene devices — on mobile render flat so lazy images load reliably inside
+   the sticky scenes; on desktop add perspective, 3D tilt and size containment. */
+.scene-devices {
+  container-type: inline-size;
+  height: min(48svh, 22rem);
+}
+.scene-devices [data-tilt] {
+  width: 92cqw;
+}
+@media (min-width: 1024px) {
+  .scene-devices {
+    container-type: size;
+    height: min(72svh, 46rem);
+    perspective: 1800px;
+  }
+  .scene-devices [data-tilt] {
+    width: min(92cqw, calc(100cqh * 1.38));
+    transform-style: preserve-3d;
+    transform: rotateY(-8deg) rotateX(4deg);
+  }
+  .scene-devices:has([data-app-stage]) [data-tilt] {
+    width: min(100cqw, calc(100cqh * 0.46));
+  }
+}
+
 /* About — phone radar pings */
 @keyframes radar-ping {
   0% { transform: scale(0.35); opacity: 0.9; }

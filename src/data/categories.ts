@@ -108,11 +108,10 @@ export const workCategories: WorkCategory[] = [
     number: '06',
     title: 'More of our work',
     slug: 'more-of-our-work',
-    tagline: 'Proprietary enterprise archives, specialized prototypes & private client releases.',
+    tagline: 'A curated selection from 1000+ delivered engagements across 17 industries in India.',
     description:
-      'A curated selection from over 1000+ delivered engagements worldwide. Additional detailed case studies and technical teardowns are scheduled for publication.',
+      'A curated selection from over 1000+ delivered engagements worldwide — spanning real estate, e-commerce, education, healthcare, technology, manufacturing, and many more industries.',
     projectSlugs: [],
-    isComingSoon: true,
   },
 ]
 

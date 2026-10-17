@@ -39,7 +39,9 @@ export function WorkScenes() {
   useGSAP(
     () => {
       const mm = gsap.matchMedia()
-      mm.add(mq.motion, () => {
+
+      // Desktop only: sticky recede, scroll-shot inside frames, ghost drift
+      mm.add(mq.desktop, () => {
         const scenes = gsap.utils.toArray<HTMLElement>('[data-scene]', scope.current)
         scenes.forEach((scene, i) => {
           const inner = scene.querySelector<HTMLElement>('[data-scene-inner]')
@@ -61,11 +63,17 @@ export function WorkScenes() {
             if (travel > 0) gsap.fromTo(img, { yPercent: 0 }, { yPercent: -travel, ease: 'none', scrollTrigger: st })
           })
           if (ghost) gsap.fromTo(ghost, { xPercent: 6 }, { xPercent: -16, ease: 'none', scrollTrigger: st })
+        })
+      })
 
+      // All sizes: entrance animations
+      mm.add(mq.motion, () => {
+        const scenes = gsap.utils.toArray<HTMLElement>('[data-scene]', scope.current)
+        scenes.forEach((scene) => {
           // Entrance: copy rises as the scene arrives.
           gsap.from(scene.querySelectorAll('[data-scene-copy] > *'), {
             y: 50,
-            autoAlpha: 0,
+            opacity: 0,
             stagger: 0.07,
             duration: 1.1,
             ease: 'expo.out',
@@ -74,7 +82,7 @@ export function WorkScenes() {
           gsap.from(scene.querySelector('[data-devices]'), {
             y: 120,
             rotateX: 18,
-            autoAlpha: 0,
+            opacity: 0,
             duration: 1.5,
             ease: 'expo.out',
             scrollTrigger: { trigger: scene, start: 'top 60%', toggleActions: 'play none none reverse' },
@@ -108,13 +116,13 @@ export function WorkScenes() {
   return (
     <div ref={scope} className="relative">
       {featuredProjects.map((p, i) => (
-        <Scene key={p.slug} project={p} index={i} total={total} />
+        <Scene key={p.slug} project={p} index={i} total={total} priority={i < 2} />
       ))}
     </div>
   )
 }
 
-function Scene({ project, index, total }: { project: Project; index: number; total: number }) {
+function Scene({ project, index, total, priority }: { project: Project; index: number; total: number; priority: boolean }) {
   const asset = showcase[project.slug]
   const isApp = asset?.kind === 'app'
   const num = String(index + 1).padStart(2, '0')
@@ -127,7 +135,7 @@ function Scene({ project, index, total }: { project: Project; index: number; tot
       data-hides-cta
       data-nav-theme="dark"
       aria-label={`${project.name} — ${project.discipline}`}
-      className="relative h-[100svh] motion-safe:sticky motion-safe:top-0"
+      className="relative h-[100svh] lg:motion-safe:sticky lg:motion-safe:top-0"
       style={{ zIndex: index + 1 }}
     >
       <div
@@ -200,18 +208,10 @@ function Scene({ project, index, total }: { project: Project; index: number; tot
           </div>
 
           {/* devices */}
-          <div className="order-1 min-h-0 [container-type:size] lg:order-2 lg:col-span-7 lg:h-[min(72svh,46rem)]" style={{ perspective: '1800px' }}>
+          <div className="scene-devices order-1 min-h-0 lg:order-2 lg:col-span-7">
             <div data-devices className="flex size-full items-center justify-center">
-              <div
-                data-tilt
-                className="relative"
-                style={{
-                  transformStyle: 'preserve-3d',
-                  transform: 'rotateY(-8deg) rotateX(4deg)',
-                  width: isApp ? 'min(100cqw, calc(100cqh * 0.46))' : 'min(92cqw, calc(100cqh * 1.38))',
-                }}
-              >
-                {isApp ? <AppStage project={project} /> : <WebStage project={project} hidePhone={HIDE_PHONE.has(project.slug)} />}
+              <div data-tilt className="relative">
+                {isApp ? <AppStage project={project} /> : <WebStage project={project} hidePhone={HIDE_PHONE.has(project.slug)} priority={priority} />}
               </div>
             </div>
           </div>
@@ -224,7 +224,7 @@ function Scene({ project, index, total }: { project: Project; index: number; tot
 }
 
 /** Desktop browser frame (+ optional phone) with the real site scrolling inside. */
-function WebStage({ project, hidePhone }: { project: Project; hidePhone: boolean }) {
+function WebStage({ project, hidePhone, priority }: { project: Project; hidePhone: boolean; priority?: boolean }) {
   const asset = showcase[project.slug]
   const d = asset?.desktop
   const m = !hidePhone ? asset?.mobile : undefined
@@ -237,7 +237,7 @@ function WebStage({ project, hidePhone }: { project: Project; hidePhone: boolean
   const frameAspect = d && !live ? Math.max(1 / FRAME_ASPECT, d.w / d.h) : 1 / FRAME_ASPECT
 
   return (
-    <div className="relative" style={{ transformStyle: 'preserve-3d' }}>
+    <div className="relative lg:[transform-style:preserve-3d]">
       {/* browser */}
       <div className="overflow-clip rounded-[clamp(0.5rem,1vw,0.9rem)] bg-[#18181a] shadow-[0_50px_120px_-30px_rgba(0,0,0,0.75),0_0_0_1px_rgba(255,255,255,0.08)]">
         <div className="flex h-[clamp(1.5rem,2.4cqw,2.2rem)] items-center gap-[0.45em] px-[0.9em] text-[clamp(0.5rem,1.1cqw,0.7rem)]">
@@ -260,8 +260,9 @@ function WebStage({ project, hidePhone }: { project: Project; hidePhone: boolean
               alt={`${project.name} website`}
               width={d.w}
               height={d.h}
-              loading="lazy"
-              decoding="async"
+              loading={priority ? 'eager' : 'lazy'}
+              decoding={priority ? 'sync' : 'async'}
+              fetchPriority={priority ? 'high' : undefined}
               className="absolute inset-x-0 top-0 w-full"
             />
           ) : null}
@@ -270,11 +271,8 @@ function WebStage({ project, hidePhone }: { project: Project; hidePhone: boolean
 
       {/* phone */}
       {m && (
-        <div
-          className="absolute -bottom-[9%] -left-[7%] w-[23%]"
-          style={{ transform: 'translateZ(90px)', transformStyle: 'preserve-3d' }}
-        >
-          <Phone src={showcaseSrc(project.slug, 'mobile')} w={m.w} h={m.h} travel={mobileTravel} alt={`${project.name} mobile site`} />
+        <div className="absolute -bottom-[9%] -left-[7%] w-[23%] lg:[transform:translateZ(90px)] lg:[transform-style:preserve-3d]">
+          <Phone src={showcaseSrc(project.slug, 'mobile')} w={m.w} h={m.h} travel={mobileTravel} alt={`${project.name} mobile site`} priority={priority} />
         </div>
       )}
     </div>
@@ -286,18 +284,18 @@ function AppStage({ project }: { project: Project }) {
   const m = showcase[project.slug]?.mobile
   if (!m) return null
   return (
-    <div className="relative" style={{ transformStyle: 'preserve-3d' }}>
+    <div data-app-stage className="relative lg:[transform-style:preserve-3d]">
       <div aria-hidden="true" className="absolute left-1/2 top-1/2 size-[190%] -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/10" />
       <div aria-hidden="true" className="absolute left-1/2 top-1/2 size-[140%] -translate-x-1/2 -translate-y-1/2 rounded-full border border-dashed border-white/10 motion-safe:animate-[spin_60s_linear_infinite]" />
       <div aria-hidden="true" className="absolute left-1/2 top-1/2 size-[120%] -translate-x-1/2 -translate-y-1/2 rounded-full glow opacity-20" />
-      <div style={{ transform: 'translateZ(40px)' }}>
+      <div className="lg:[transform:translateZ(40px)]">
         <Phone src={showcaseSrc(project.slug, 'mobile')} w={m.w} h={m.h} travel={Math.max(0, (1 - (19 / 9) / (m.h / m.w)) * 100)} alt={`${project.name} app`} />
       </div>
     </div>
   )
 }
 
-function Phone({ src, w, h, travel, alt }: { src: string; w: number; h: number; travel: number; alt: string }) {
+function Phone({ src, w, h, travel, alt, priority }: { src: string; w: number; h: number; travel: number; alt: string; priority?: boolean }) {
   return (
     <div className="rounded-[18%/8.5%] bg-[#0b0b0c] p-[4.5%] shadow-[0_40px_80px_-20px_rgba(0,0,0,0.8),0_0_0_1px_rgba(255,255,255,0.12)]">
       <div className="relative overflow-clip rounded-[14%/6.6%] bg-white" style={{ aspectRatio: '9 / 19' }}>
@@ -308,8 +306,9 @@ function Phone({ src, w, h, travel, alt }: { src: string; w: number; h: number; 
           alt={alt}
           width={w}
           height={h}
-          loading="lazy"
-          decoding="async"
+          loading={priority ? 'eager' : 'lazy'}
+          decoding={priority ? 'sync' : 'async'}
+          fetchPriority={priority ? 'high' : undefined}
           className="absolute inset-x-0 top-0 w-full"
         />
         <span aria-hidden="true" className="absolute left-1/2 top-[1.6%] h-[3.2%] w-[30%] -translate-x-1/2 rounded-full bg-[#0b0b0c]" />

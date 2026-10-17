@@ -89,7 +89,7 @@ export function CustomCursor() {
         ref={ringRef}
         className={cn(
           'absolute left-0 top-0 flex items-center justify-center rounded-full transition-[width,height,background-color,border-color,opacity] duration-500 ease-[var(--ease-expo)]',
-          !labelled && 'border border-white mix-blend-difference',
+          !labelled && 'border border-ink',
           labelled && 'bg-accent text-on-accent',
           mode === 'default' && 'size-9',
           mode === 'link' && 'size-12 bg-white',
@@ -112,7 +112,7 @@ export function CustomCursor() {
       <div
         ref={dotRef}
         className={cn(
-          'absolute left-0 top-0 size-1.5 rounded-full bg-white mix-blend-difference transition-opacity duration-300',
+          'absolute left-0 top-0 size-1.5 rounded-full bg-ink transition-opacity duration-300',
           (mode !== 'default' || !visible) && 'opacity-0',
         )}
       />

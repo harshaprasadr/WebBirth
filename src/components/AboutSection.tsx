@@ -5,7 +5,7 @@ import { registerParallax, registerReveals } from '@/animations/reveal'
 import { prefersReducedMotion } from '@/lib/env'
 
 const facts = [
-  { k: 'Founder', v: 'Darshan M R' },
+  { k: 'Team Size', v: '150+' },
   { k: 'Studio', v: `${company.city}, ${company.country}` },
   { k: 'Reach', v: '15+ countries' },
   { k: 'Focus', v: 'Software · Products · Technology' },

@@ -31,7 +31,7 @@ export const projects: Project[] = [
     industry: 'Healthcare & Legal · USA',
     discipline: 'Web Application',
     summary:
-      'A case management portal for medical-legal teams — cases, matters, providers and ER reports, with live case analytics.',
+      'A case management portal for medical-legal teams, cases, matters, providers and ER reports, with live case analytics.',
     tone: '#0c1a33',
     deliverables: ['Web Application', 'Dashboard', 'UI / UX Design'],
     featured: true,
@@ -42,7 +42,7 @@ export const projects: Project[] = [
     industry: 'Legal Case Management · USA',
     discipline: 'Web Application',
     summary:
-      'A practice management workspace for case teams — parties, matters, tasks, damages and team workload in one place.',
+      'A practice management workspace for case teams, parties, matters, tasks, damages and team workload in one place.',
     tone: '#111a2e',
     deliverables: ['Web Application', 'Dashboard', 'UI / UX Design'],
     featured: true,
@@ -53,7 +53,7 @@ export const projects: Project[] = [
     industry: 'Healthcare · USA',
     discipline: 'Intranet Portal',
     summary:
-      'An employee intranet for a health system — events, announcements, policies, IT tickets and the staff directory in one hub.',
+      'An employee intranet for a health systems, events, announcements, policies, IT tickets and the staff directory in one hub.',
     tone: '#151a4d',
     deliverables: ['Web Application', 'Intranet', 'UI / UX Design'],
     featured: true,
@@ -64,7 +64,7 @@ export const projects: Project[] = [
     industry: 'Business Communications · USA',
     discipline: 'Corporate Website',
     summary:
-      'A website for a Texas-based provider of enterprise-grade VoIP, cloud phone systems and call-centre solutions.',
+      'A website for a Texas based provider of enterprise grade VoIP, cloud phone systems and call centre solutions.',
     tone: '#2a0c0c',
     url: 'https://westvox.com/',
     deliverables: ['Web Development', 'UI / UX Design'],
@@ -86,7 +86,7 @@ export const projects: Project[] = [
     industry: 'Cultural & Community Organization · Sugar Land, TX',
     discipline: 'Devotee Portal & Temple Management',
     summary:
-      'A comprehensive digital community ecosystem for the landmark temple in Sugar Land, Texas (home of the Statue of Union) — featuring online Dhanurmasa pooja registrations, daily priest service bookings & pricing, weekly prasadam ordering, Prajna Vedic education, and donor sponsorships.',
+      'A comprehensive digital community ecosystem for the landmark temple in Sugar Land, Texas (home of the Statue of Union) featuring online Dhanurmasa pooja registrations, daily priest service bookings & pricing, weekly prasadam ordering, Prajna Vedic education, and donor sponsorships.',
     tone: '#2a1406',
     url: 'https://ashtalakshmi.org/',
     deliverables: ['Devotee Portal', 'Priest Booking System', 'Prasadam Ordering', 'Event Registrations'],
@@ -97,7 +97,7 @@ export const projects: Project[] = [
     industry: 'Business Financing & Capital Solutions · USA',
     discipline: 'Corporate Financing Platform',
     summary:
-      'A bespoke capital funding platform delivering structured financing solutions for businesses in Healthcare and Commercial Real Estate — supporting working capital, acquisition financing, accounts receivable funding, inventory lines, development capital, and growth loans.',
+      'A bespoke capital funding platform delivering structured financing solutions for businesses in Healthcare and Commercial Real Estate supporting working capital, acquisition financing, accounts receivable funding, inventory lines, development capital, and growth loans.',
     tone: '#0b1d28',
     url: 'https://aspencptl.com/',
     deliverables: ['Capital Solutions Platform', 'Deal Structuring Engine', 'Healthcare & CRE Portals', 'UI / UX Design'],
@@ -108,7 +108,7 @@ export const projects: Project[] = [
     industry: 'Legal & Corporate Advisory · USA',
     discipline: 'Corporate Legal Website',
     summary:
-      'A premier corporate advisory and legal consultation web presence designed for high-stakes business structuring, regulatory filings, and partner representation.',
+      'A premier corporate advisory and legal consultation web presence designed for high stakes business structuring, regulatory filings, and partner representation.',
     tone: '#161924',
     deliverables: ['Web Development', 'Brand Architecture', 'UI / UX Design'],
   },
@@ -118,7 +118,7 @@ export const projects: Project[] = [
     industry: 'Clinical Healthcare & Primary Care · Houston, TX',
     discipline: 'Healthcare Network & Patient Portal',
     summary:
-      'A patient-first healthcare network portal across Houston and Cypress, Texas — integrating live EHR appointment scheduling, pediatric care references and dosage charts, acute & chronic disease management, in-home care routing, and new patient onboarding.',
+      'A patient-first healthcare network portal across Houston and Cypress, Texas integrating live EHR appointment scheduling, pediatric care references and dosage charts, acute & chronic disease management, in home care routing, and new patient onboarding.',
     tone: '#0a2238',
     url: 'https://www.1960pa.care/',
     deliverables: ['EHR Patient Portal', 'Appointment Engine', 'Pediatric Center', 'Provider Directory'],
@@ -129,7 +129,7 @@ export const projects: Project[] = [
     industry: 'Golf Apparel · USA',
     discipline: 'E-commerce Platform',
     summary:
-      'An online store for modern performance golf apparel — polos, hats and pullovers, with bundles and best sellers.',
+      'An online store for modern performance golf apparel polos, hats and pullovers, with bundles and best sellers.',
     tone: '#0d2418',
     url: 'https://goodrollgolf.com/',
     deliverables: ['E-commerce', 'UI / UX Design'],
@@ -142,7 +142,7 @@ export const projects: Project[] = [
     industry: 'Careers & Education',
     discipline: 'Web Platform',
     summary:
-      'A career-development platform with workshops, a career igniter and a character toolkit for students and professionals worldwide.',
+      'A career development platform with workshops, a career igniter and a character toolkit for students and professionals worldwide.',
     tone: '#1f0d3a',
     url: 'https://generationpurple.com/',
     deliverables: ['Web Application', 'UI / UX Design'],
@@ -153,7 +153,7 @@ export const projects: Project[] = [
     industry: 'Document Automation & AI',
     discipline: 'SaaS Platform',
     summary:
-      'One platform for the whole document lifecycle — storage, PDF tools, e-signatures, workflow automation, templates and AI summarization.',
+      'One platform for the whole document lifecycle storage, PDF tools, e-signatures, workflow automation, templates and AI summarization.',
     tone: '#062a1c',
     url: 'https://documintq.com/',
     deliverables: ['SaaS Platform', 'Web Application', 'UI / UX Design'],
@@ -165,7 +165,7 @@ export const projects: Project[] = [
     industry: 'Fintech & Payments',
     discipline: 'Digital Remittance Platform',
     summary:
-      'A secure financial technology interface for fast, frictionless cross-border payments, live currency conversion rates, and automated compliance pipelines.',
+      'A secure financial technology interface for fast, frictionless cross border payments, live currency conversion rates, and automated compliance pipelines.',
     tone: '#09211b',
     deliverables: ['Fintech Platform', 'Web Application', 'UI / UX Design'],
   },
@@ -222,7 +222,7 @@ export const projects: Project[] = [
     industry: 'Business Documentation',
     discipline: 'Web & Mobile App',
     summary:
-      'A one-stop platform and mobile app for business registrations and documentation — GST, company registration, PAN, agreements and expert consultations.',
+      'A one-stop platform and mobile app for business registrations and documentation and GST, company registration, PAN, agreements and expert consultations.',
     tone: '#0d1b33',
     url: 'https://doczee.in/',
     playStore: 'https://play.google.com/store/apps/details?id=com.webbirth.doczee&hl=en_IN',
@@ -248,7 +248,7 @@ export const projects: Project[] = [
     industry: 'Travel & Transport',
     discipline: 'Web & Mobile App',
     summary:
-      'A travel booking platform and mobile app for bus tickets, tour packages, car rentals and resorts — with live tracking and interactive seat selection.',
+      'A travel booking platform and mobile app for bus tickets, tour packages, car rentals and resorts with live tracking and interactive seat selection.',
     tone: '#3a0a10',
     url: 'https://bussguru.in/',
     playStore: 'https://play.google.com/store/apps/details?id=com.bussguru&hl=en_IN',
@@ -262,7 +262,7 @@ export const projects: Project[] = [
     industry: 'Food & Spices',
     discipline: 'E-commerce · Web & Mobile App',
     summary:
-      'An online storefront and mobile app for a masala and fresh-flour brand — product catalogue, category filters, search and cart built for everyday ordering.',
+      'An online storefront and mobile app for a masala and fresh-flour brand product catalogue, category filters, search and cart built for everyday ordering.',
     tone: '#3a1606',
     url: 'https://girani.in/',
     playStore: 'https://play.google.com/store/apps/details?id=com.girani.user&hl=en_IN',
@@ -276,7 +276,7 @@ export const projects: Project[] = [
     industry: 'Religious & Spiritual',
     discipline: 'Web & Mobile App',
     summary:
-      'A one-stop shop and mobile app for pooja services, astrology, vastu and religious products, from flowers and idols to spiritual books.',
+      'A one stop shop and mobile app for pooja services, astrology, vastu and religious products, from flowers and idols to spiritual books.',
     tone: '#2a0e3d',
     url: 'https://ramanujakuteera.com/',
     playStore: 'https://play.google.com/store/apps/details?id=com.user.ramanujakuteera&hl=en_IN',
@@ -289,7 +289,7 @@ export const projects: Project[] = [
     industry: 'Interior Design',
     discipline: 'Business Website',
     summary:
-      'A website for an interiors studio delivering modern, functional homes on time — with customizable design packages and instant quote calculators.',
+      'A website for an interiors studio delivering modern, functional homes on time with customizable design packages and instant quote calculators.',
     tone: '#1f160d',
     url: 'https://classifyinteriors.com/',
     deliverables: ['Web Development', 'UI / UX Design'],
@@ -346,7 +346,7 @@ export const projects: Project[] = [
     industry: 'Education & EdTech',
     discipline: 'Ed-Tech Platform',
     summary:
-      'A self-learning platform for KAS and IAS aspirants with a study-material shop, downloadable resources and a news feed for exam preparation.',
+      'A self learning platform for KAS and IAS aspirants with a study material shop, downloadable resources and a news feed for exam preparation.',
     tone: '#06123a',
     url: 'https://swaadhyay.com/',
     deliverables: ['Web Application', 'E-commerce', 'UI / UX Design'],
@@ -369,7 +369,7 @@ export const projects: Project[] = [
     industry: 'Early Education',
     discipline: 'School Website',
     summary:
-      'A vibrant website for a premier kindergarten and early education academy — curriculum overviews, activity galleries, and interactive admissions inquiry.',
+      'A vibrant website for a premier kindergarten and early education academy curriculum overviews, activity galleries, and interactive admissions inquiry.',
     tone: '#2a0d1f',
     url: 'https://enrichglobalacademy.com/',
     deliverables: ['Web Development', 'UI / UX Design'],
@@ -382,7 +382,7 @@ export const projects: Project[] = [
     industry: 'Vehicle Care & Partner Network',
     discipline: 'Mobile Application',
     summary:
-      'The dedicated partner app for field mechanics — receive breakdown requests nearby, navigate with in-app GPS, and complete jobs with 100% direct payouts.',
+      'The dedicated partner app for field mechanics receive breakdown requests nearby, navigate with in app GPS, and complete jobs with 100% direct payouts.',
     tone: '#2a1406',
     url: 'https://sancharamitra.co.in/',
     playStore: 'https://play.google.com/store/apps/details?id=com.webbirth.sancharamithramechanic&hl=en_IN',

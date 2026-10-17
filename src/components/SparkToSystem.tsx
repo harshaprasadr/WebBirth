@@ -11,7 +11,7 @@ const chapters = [
   {
     key: 'Spark',
     title: ['Every product', 'starts as a spark.'],
-    body: 'A question, a sketch, a problem worth solving. We start by understanding it — your business, your users, your goals.',
+    body: 'A question, a sketch, a problem worth solving. We start by understanding your business, your users, your goals.',
   },
   {
     key: 'Shape',
@@ -21,7 +21,7 @@ const chapters = [
   {
     key: 'System',
     title: ['Then engineer it', 'to scale.'],
-    body: 'Robust software, cloud and APIs — a living system that performs today and grows with you tomorrow.',
+    body: 'Robust software, cloud and APIs, a living system that performs today and grows with you tomorrow.',
   },
 ]
 

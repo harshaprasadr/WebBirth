@@ -2,6 +2,13 @@
   publish = "dist"
   command = "npm run build"
 
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+
+[build.environment]
+  VITE_CONTACT_ENDPOINT = "/.netlify/functions/contact"
+
 [[redirects]]
   from = "/*"
   to = "/index.html"
