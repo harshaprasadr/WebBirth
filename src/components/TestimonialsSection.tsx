@@ -97,7 +97,7 @@ export function TestimonialsSection() {
               <Stars value={5} dark className="mb-2 text-[1.4rem]" />
             </div>
             <p className="type-body mt-4 max-w-xs text-paper/60">
-              Rated <CountUp to={googleRating.score} decimals={1} /> across <CountUp to={googleRating.count} /> Google reviews, plus verified partners. Here’s what a few of them said.
+              Rated <CountUp to={googleRating.score} decimals={1} /> across Google reviews and verified partners. Here’s what a few of them said.
             </p>
           </div>
 
@@ -141,12 +141,12 @@ export function TestimonialsSection() {
         >
           <Quote
             aria-hidden="true"
-            className="pointer-events-none absolute -left-2 -top-6 size-[clamp(3rem,6vw,5.5rem)] rotate-180 fill-accent/15 text-accent/15 lg:-top-10"
+            className="pointer-events-none absolute -left-2 -top-14 size-[clamp(3rem,6vw,5.5rem)] rotate-180 fill-accent/15 text-accent/15 lg:-top-16"
             strokeWidth={1}
           />
 
           <div
-            className="relative min-h-[18rem] sm:min-h-[16rem]"
+            className="relative mt-6 min-h-[18rem] sm:min-h-[16rem] lg:mt-0"
             aria-roledescription="carousel"
             aria-live="polite"
           >

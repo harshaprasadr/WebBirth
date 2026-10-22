@@ -177,8 +177,8 @@ function Odometer({ value }: { value: number }) {
         gsap
           .timeline({ delay: i * 0.08 })
           .to(el, { yPercent: to, duration: 1.15, ease: 'expo.inOut' }, 0)
-          .fromTo(el, { filter: 'blur(0px)', scaleY: 1 }, { filter: 'blur(7px)', scaleY: 1.14, duration: 0.42, ease: 'power2.in' }, 0)
-          .to(el, { filter: 'blur(0px)', scaleY: 1, duration: 0.7, ease: 'expo.out' }, 0.42)
+          .fromTo(el, { opacity: 1, scaleY: 1 }, { opacity: 0.3, scaleY: 1.14, duration: 0.42, ease: 'power2.in' }, 0)
+          .to(el, { opacity: 1, scaleY: 1, duration: 0.7, ease: 'expo.out' }, 0.42)
       })
       ghosts.forEach((el, i) => gsap.to(el, { yPercent: -digits[i] * 10, duration: 1.6, ease: 'expo.inOut', delay: 0.18 + i * 0.08 }))
       gsap.fromTo(

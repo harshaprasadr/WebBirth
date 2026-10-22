@@ -143,7 +143,7 @@ function paintStage(root: HTMLElement, dpr: number) {
   // stage glow (mirrors the CSS backdrop)
   const portrait = H > W // matches the CSS `portrait:` variant
   const gx = portrait ? W * 0.5 : W * 0.7
-  const gy = portrait ? H * 0.56 : H * 0.48
+  const gy = portrait ? H * 0.58 : H * 0.48
   const glow = ctx.createRadialGradient(gx, gy, 0, gx, gy, Math.max(W, H) * 0.5)
   glow.addColorStop(0, 'rgba(255,120,50,0.55)')
   glow.addColorStop(0.3, 'rgba(242,87,28,0.18)')
@@ -211,9 +211,9 @@ function useAnchor(stageRef: RefObject<HTMLElement | null>) {
     const root = stageRef.current
     const dots = root ? [...root.querySelectorAll<HTMLElement>('[data-seg="accent"]')].filter((d) => d.offsetParent) : []
     const dot = dots[dots.length - 1]
-    if (!root || !dot) return 0.66
+    if (!root || !dot) return 0.75
     const x = offsetWithin(dot, root).x / root.clientWidth
-    return THREE.MathUtils.clamp(x + 0.02, 0.6, 0.74)
+    return THREE.MathUtils.clamp(x + 0.06, 0.62, 0.80)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [size.width, size.height, stageRef])
 }
@@ -229,9 +229,9 @@ function GlassMark({ play, reduced, mobile, stageRef }: { play: boolean; reduced
 
   // Layout: right of centre on wide screens, centred and lower on portrait.
   const portrait = vp.aspect < 1
-  const baseScale = portrait ? (vp.width * 0.58) / 4.65 : Math.min((vp.height * 0.36) / 3.2, (vp.width * 0.32) / 4.65)
+  const baseScale = portrait ? (vp.width * 0.34) / 4.65 : Math.min((vp.height * 0.30) / 3.2, (vp.width * 0.26) / 4.65)
   const baseX = portrait ? 0 : (anchor - 0.5) * vp.width
-  const baseY = portrait ? -vp.height * 0.015 : -vp.height * 0.02
+  const baseY = portrait ? -vp.height * 0.0 : -vp.height * 0.02
 
   useEffect(() => {
     if (reduced || !play) return
@@ -250,10 +250,19 @@ function GlassMark({ play, reduced, mobile, stageRef }: { play: boolean; reduced
   useFrame((state) => {
     const g = rig.current
     if (!g) return
-    const t = reduced ? 0 : state.clock.elapsedTime
     const k = intro.current.k
     const s = sceneState.heroScroll
-    // intro: edge-on, small and deep → front-facing
+
+    if (portrait) {
+      g.rotation.x = 0
+      g.rotation.y = 0
+      g.rotation.z = 0
+      g.scale.setScalar(baseScale * k)
+      g.position.set(baseX, baseY, 1.6)
+      return
+    }
+
+    const t = reduced ? 0 : state.clock.elapsedTime
     const tx = -0.08 + state.pointer.y * -0.22 + s * 0.7 + Math.sin(t * 0.5) * 0.05
     const ty = state.pointer.x * 0.5 + Math.sin(t * 0.32) * 0.28 + (1 - k) * -1.9 + s * 1.1
     g.rotation.x = THREE.MathUtils.lerp(g.rotation.x, tx, 0.06)

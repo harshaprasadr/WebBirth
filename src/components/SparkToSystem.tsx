@@ -132,8 +132,9 @@ export function SparkToSystem() {
           />
         )}
 
-        {/* legibility scrim behind the chapter copy */}
-        <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 bottom-0 h-[45%] bg-gradient-to-t from-[#060606] via-[#060606]/60 to-transparent sm:h-[38%]" />
+        {/* legibility scrims behind text */}
+        <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 h-[30%] bg-gradient-to-b from-[#060606] via-[#060606]/50 to-transparent sm:h-[22%]" />
+        <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 bottom-0 h-[50%] bg-gradient-to-t from-[#060606] via-[#060606]/60 to-transparent sm:h-[38%]" />
 
         {/* overlay UI */}
         <div

@@ -141,7 +141,7 @@ export function ContactForm() {
 
         {/* form */}
         <form noValidate onSubmit={onSubmit} className="lg:col-span-7 lg:col-start-6" aria-describedby="form-status">
-          <div className="grid gap-x-10 gap-y-1 md:grid-cols-2">
+          <div className="grid gap-x-10 gap-y-0 md:grid-cols-2">
             <Field label="Name" name="name" autoComplete="name" required maxLength={30} value={values.name} onValue={set('name')} error={errors.name} />
             <Field label="Email" name="email" type="email" autoComplete="email" required value={values.email} onValue={set('email')} error={errors.email} />
             <Field label="Phone (optional)" name="phone" type="tel" autoComplete="tel" maxLength={15} value={values.phone} onValue={set('phone')} error={errors.phone} />
@@ -258,7 +258,7 @@ function Field({ label, name, value, onValue, error, multiline, required, ...res
     'aria-invalid': !!error,
     'aria-describedby': error ? errId : undefined,
     className:
-      'peer block w-full resize-none bg-transparent pb-4 pt-8 text-[1.12rem] font-medium tracking-[-0.015em] text-ink outline-none placeholder-transparent selection:bg-accent/15 selection:text-ink autofill:shadow-[inset_0_0_0px_1000px_var(--color-paper)] autofill:[-webkit-text-fill-color:var(--color-ink)] focus-visible:outline-none',
+      'peer block w-full resize-none bg-transparent pb-3 pt-7 text-base sm:text-[1.12rem] font-medium tracking-[-0.015em] text-ink caret-ink outline-none placeholder-transparent selection:bg-accent/15 selection:text-ink autofill:shadow-[inset_0_0_0px_1000px_var(--color-paper)] autofill:[-webkit-text-fill-color:var(--color-ink)] focus-visible:outline-none',
   }
   return (
     <div className="relative">
@@ -268,17 +268,19 @@ function Field({ label, name, value, onValue, error, multiline, required, ...res
         )}
       >
         {multiline ? (
-          <textarea {...shared} rows={4} onChange={(e) => onValue(e.target.value)} />
+          <textarea {...shared} rows={4} className={shared.className.replace('pt-7', 'pt-9') + ' scrollbar-thin'} onChange={(e) => onValue(e.target.value)} />
         ) : (
           <input {...shared} {...rest} onChange={(e) => onValue(e.target.value)} />
         )}
         <label
           htmlFor={id}
           className={cn(
-            'type-meta pointer-events-none absolute left-4 origin-left transition-all duration-500 ease-[var(--ease-expo)]',
-            'top-[1.85rem] text-muted',
-            'peer-focus:top-2.5 peer-focus:text-[0.6rem] peer-focus:text-accent',
-            'peer-[:not(:placeholder-shown)]:top-2.5 peer-[:not(:placeholder-shown)]:text-[0.6rem]',
+            'type-meta pointer-events-none absolute left-4 z-[1] origin-left transition-all duration-500 ease-[var(--ease-expo)]',
+            multiline ? 'top-[2rem] text-muted' : 'top-[1.6rem] text-muted',
+            multiline
+              ? 'peer-focus:top-1 peer-focus:text-[0.6rem] peer-focus:text-accent peer-[:not(:placeholder-shown)]:top-1 peer-[:not(:placeholder-shown)]:text-[0.6rem]'
+              : 'peer-focus:top-2 peer-focus:text-[0.6rem] peer-focus:text-accent peer-[:not(:placeholder-shown)]:top-2 peer-[:not(:placeholder-shown)]:text-[0.6rem]',
+            multiline && 'bg-paper px-1',
           )}
         >
           {label}
@@ -296,7 +298,7 @@ function Field({ label, name, value, onValue, error, multiline, required, ...res
           aria-hidden="true"
         />
       </div>
-      <p id={errId} className={cn('min-h-5 px-4 pt-1.5 text-[0.78rem] text-red-600', !error && 'invisible')}>
+      <p id={errId} className={cn('min-h-4 px-4 pt-1 text-[0.75rem] text-red-600', !error && 'invisible')}>
         {error ?? '·'}
       </p>
     </div>

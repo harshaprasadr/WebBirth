@@ -262,7 +262,7 @@ export const projects: Project[] = [
     industry: 'Food & Spices',
     discipline: 'E-commerce · Web & Mobile App',
     summary:
-      'An online storefront and mobile app for a masala and fresh-flour brand product catalogue, category filters, search and cart built for everyday ordering.',
+      'An online storefront and mobile app for a masala and fresh-flour brand\'s product catalogue, category filters, search and cart built for everyday ordering.',
     tone: '#3a1606',
     url: 'https://girani.in/',
     playStore: 'https://play.google.com/store/apps/details?id=com.girani.user&hl=en_IN',

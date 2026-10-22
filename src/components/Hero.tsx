@@ -94,7 +94,7 @@ export function Hero() {
       {/* stage glow — identical to the GL backdrop so the hand-off is seamless */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_50vmax_at_70%_48%,rgba(255,120,50,0.55)_0%,rgba(242,87,28,0.18)_30%,rgba(242,87,28,0)_100%)] portrait:bg-[radial-gradient(circle_50vmax_at_50%_56%,rgba(255,120,50,0.55)_0%,rgba(242,87,28,0.18)_30%,rgba(242,87,28,0)_100%)]"
+        className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_50vmax_at_70%_48%,rgba(255,120,50,0.55)_0%,rgba(242,87,28,0.18)_30%,rgba(242,87,28,0)_100%)] portrait:bg-[radial-gradient(circle_50vmax_at_50%_58%,rgba(255,120,50,0.55)_0%,rgba(242,87,28,0.18)_30%,rgba(242,87,28,0)_100%)]"
       />
 
       {/* WebGL stage */}
@@ -113,7 +113,7 @@ export function Hero() {
           src="/brand/webbirth-mark-lg.webp?v=2"
           alt=""
           aria-hidden="true"
-          className="pointer-events-none absolute right-[8%] top-1/2 w-[min(38vw,34rem)] -translate-y-1/2 opacity-90 max-md:right-1/2 max-md:top-[56%] max-md:w-[70vw] max-md:translate-x-1/2"
+          className="pointer-events-none absolute right-[8%] top-1/2 w-[min(38vw,34rem)] -translate-y-1/2 opacity-90 max-md:right-1/2 max-md:top-[58%] max-md:w-[60vw] max-md:translate-x-1/2"
         />
       )}
 

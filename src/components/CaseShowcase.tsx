@@ -27,6 +27,7 @@ export function CaseShowcase({ project }: { project: Project }) {
   const showPhone = !isAppOnly && hasBoth && !!asset?.mobile
   const showAppsHero = false
   const showAppsBlock = (hasBoth || isAppOnly) && !!appsSrc
+  const isCrop = asset?.kind === 'crop'
   const scrollable = asset?.kind === 'live' && !!asset.desktop && asset.desktop.h / asset.desktop.w > 0.9
 
   const tone = project.tone
@@ -183,7 +184,7 @@ export function CaseShowcase({ project }: { project: Project }) {
                       alt={`${project.name} website`}
                       decoding="async"
                       className={
-                        scrollable ? 'block h-auto w-full' : 'block size-full origin-top object-cover object-top'
+                        scrollable || isCrop ? 'block h-auto w-full' : 'block size-full origin-top object-cover object-top'
                       }
                     />
                   </div>

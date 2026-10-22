@@ -220,10 +220,11 @@ function Particles({ count, reduced }: { count: number; reduced: boolean }) {
     const p = points.current
     if (!p) return
     // Fit the composition to narrow screens.
-    const fit = THREE.MathUtils.clamp(state.viewport.width / 5.6, 0.48, 1)
+    const fit = THREE.MathUtils.clamp(state.viewport.width / 5.6, 0.4, 1)
     p.scale.setScalar(THREE.MathUtils.lerp(p.scale.x, fit, 0.1))
-    // Portrait screens: lift the composition above the chapter copy.
-    const lift = state.viewport.aspect < 1 ? state.viewport.height * 0.12 : 0
+    // Portrait screens: nudge the composition slightly above centre so it
+    // clears the chapter copy without overlapping the title.
+    const lift = state.viewport.aspect < 1 ? state.viewport.height * 0.04 : 0
     p.position.y = THREE.MathUtils.lerp(p.position.y, lift, 0.1)
     // Pointer parallax, stronger on the logo so it feels sculptural.
     const logo = Math.max(0, 1 - Math.abs(progress.current - 1))

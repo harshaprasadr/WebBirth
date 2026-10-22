@@ -21,7 +21,7 @@ export const socials = [
   { label: 'Instagram', href: 'https://www.instagram.com/webbirth' },
   { label: 'Facebook', href: 'https://www.facebook.com/webbirth.co' },
   { label: 'X', href: 'https://twitter.com/webbirth2' },
-  { label: 'WhatsApp', href: 'https://wa.link/p2jctq' },
+  { label: 'WhatsApp', href: 'https://wa.me/919535135278' },
 ] as const
 
 /** Every nav item scrolls to its section on the home page (the full /work page is linked from that section). */

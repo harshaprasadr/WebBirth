@@ -85,15 +85,10 @@ function ViewAllWork() {
       </div>
 
       {/* drifting reel of curated projects */}
-      <TransitionLink
-        to="/work"
-        className="group mt-[clamp(2.5rem,5vw,4rem)] block"
-        data-cursor="view"
-        data-cursor-label="View all"
-      >
-        <div className="flex w-max animate-[marquee_80s_linear_infinite] gap-4 group-hover:[animation-play-state:paused] motion-reduce:animate-none sm:gap-6">
+      <div className="mt-[clamp(2.5rem,5vw,4rem)] overflow-clip">
+        <div className="flex w-max animate-[marquee_80s_linear_infinite] gap-4 hover:[animation-play-state:paused] motion-reduce:animate-none sm:gap-6">
           {reel.map((p, i) => (
-            <figure key={`${p.slug}-${i}`} className="w-[15rem] shrink-0 sm:w-[19rem]" aria-hidden={i >= reelProjects.length}>
+            <figure key={`${p.slug}-${i}`} className="group w-[15rem] shrink-0 sm:w-[19rem]" aria-hidden={i >= reelProjects.length}>
               <div className="relative aspect-[4/3] overflow-clip rounded-sm bg-ink">
                 <div className="absolute inset-0 transition-transform duration-700 ease-[var(--ease-expo)] group-hover:scale-[1.04]">
                   <ProjectMedia project={p} sizes="19rem" variant="compact" />
@@ -106,7 +101,7 @@ function ViewAllWork() {
             </figure>
           ))}
         </div>
-      </TransitionLink>
+      </div>
     </div>
   )
 }

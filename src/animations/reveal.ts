@@ -15,6 +15,7 @@ import { prefersReducedMotion } from '@/lib/env'
  */
 export function registerReveals(scope: Element) {
   const reduced = prefersReducedMotion()
+  const isMobile = window.innerWidth < 768
   const items = gsap.utils.toArray<HTMLElement>('[data-reveal]', scope)
 
   items.forEach((el) => {
@@ -70,7 +71,7 @@ export function registerReveals(scope: Element) {
         )
         break
       default:
-        gsap.from(el, { y: 36, autoAlpha: 0, duration: 1.1, ease: 'expo.out', delay, scrollTrigger })
+        gsap.from(el, { y: isMobile ? 24 : 36, autoAlpha: 0, duration: isMobile ? 0.8 : 1.1, ease: 'expo.out', delay, scrollTrigger })
     }
   })
 }

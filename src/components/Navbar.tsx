@@ -207,8 +207,8 @@ export function Navbar() {
         <div
           aria-hidden="true"
           className={cn(
-            'absolute inset-0 -z-10 transition-[opacity,background-color] duration-500',
-            dark ? 'border-b border-line-dark bg-ink/95' : 'border-b border-line bg-paper/95',
+            'absolute inset-0 -z-10 backdrop-blur-md transition-[opacity,background-color] duration-500',
+            dark ? 'border-b border-line-dark bg-ink/85' : 'border-b border-line bg-paper/85',
             scrolled && !open ? 'opacity-100' : 'opacity-0',
           )}
         />
@@ -293,9 +293,9 @@ export function Navbar() {
             onClick={() => setOpen((v) => !v)}
             aria-expanded={open}
             aria-controls="mobile-menu"
-            className="type-meta -mr-2 flex min-h-11 items-center gap-3 px-2 lg:hidden"
+            aria-label={open ? 'Close menu' : 'Open menu'}
+            className="-mr-2 flex min-h-11 items-center px-2 lg:hidden"
           >
-            <span>{open ? 'Close' : 'Menu'}</span>
             <span className="relative block h-2.5 w-5" aria-hidden="true">
               <span
                 className={cn(
@@ -325,7 +325,7 @@ export function Navbar() {
             initial={{ clipPath: 'circle(0% at calc(100% - 2.5rem) 2.25rem)' }}
             animate={{ clipPath: 'circle(150% at calc(100% - 2.5rem) 2.25rem)' }}
             exit={{ clipPath: 'circle(0% at calc(100% - 2.5rem) 2.25rem)' }}
-            transition={{ duration: 0.85, ease: [0.76, 0, 0.24, 1] }}
+            transition={{ duration: 0.7, ease: [0.76, 0, 0.24, 1] }}
           >
             {/* atmosphere: warm glow + slow-turning mark watermark */}
             <div aria-hidden="true" className="pointer-events-none fixed inset-0 overflow-hidden">
@@ -355,7 +355,7 @@ export function Navbar() {
                           className="group flex min-h-14 items-center gap-4"
                           exit={{ y: '-110%', transition: { duration: 0.35, ease: [0.76, 0, 0.24, 1] } }}
                         >
-                          <span aria-hidden="true" className="relative block flex-1 overflow-y-clip text-[min(13.5vw,8.2svh)] leading-[1.02]">
+                          <span aria-hidden="true" className="relative block flex-1 overflow-y-clip text-[min(10vw,7svh)] leading-[1.02]">
                             {/* resting label: sans (or italic serif when current), letters flip in */}
                             <span
                               className={cn(

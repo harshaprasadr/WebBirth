@@ -114,9 +114,9 @@ export function PageTransition({ children }: { children: ReactNode }) {
             navigate(path)
           },
         })
-        .set(overlay, { visibility: 'visible', clipPath: COVER, autoAlpha: 1 })
+        .set(overlay, { visibility: 'visible', clipPath: COVER, autoAlpha: 1, force3D: true })
         .to(overlay, { clipPath: FULL, duration: 0.42, ease: 'power4.inOut' })
-        .to(page, { y: -60, opacity: 0.4, duration: 0.42, ease: 'power3.in' }, 0)
+        .to(page, { y: -60, opacity: 0.4, duration: 0.42, ease: 'power3.in', force3D: true }, 0)
 
       if (activeEl) {
         tl.fromTo(activeEl, { yPercent: 110 }, { yPercent: 0, duration: 0.5, ease: 'expo.out' }, 0.2)
@@ -169,7 +169,7 @@ export function PageTransition({ children }: { children: ReactNode }) {
         tl.to(activeEl, { yPercent: -110, duration: 0.3, ease: 'power3.in' })
       }
       tl.to(overlay, { clipPath: LIFT, duration: 0.5, ease: 'power4.inOut' }, 0.08)
-        .fromTo(page, { y: 80, opacity: 1 }, { y: 0, duration: 0.9, ease: 'expo.out' }, 0.22)
+        .fromTo(page, { y: 80, opacity: 1 }, { y: 0, duration: 0.9, ease: 'expo.out', force3D: true }, 0.22)
     })
     return () => cancelAnimationFrame(raf)
     // eslint-disable-next-line react-hooks/exhaustive-deps

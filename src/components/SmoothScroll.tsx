@@ -29,12 +29,15 @@ export function SmoothScroll({ children }: { children: ReactNode }) {
   useEffect(() => {
     if (reduced) return
 
+    const isMobile = window.innerWidth < 768
     const lenis = new Lenis({
-      duration: 1.15,
+      duration: isMobile ? 1.0 : 1.15,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       smoothWheel: true,
-      wheelMultiplier: 0.95,
-      touchMultiplier: 1.4,
+      wheelMultiplier: isMobile ? 1.0 : 0.95,
+      touchMultiplier: isMobile ? 1.8 : 1.4,
+      syncTouch: true,
+      syncTouchLerp: 0.068,
     })
     lenisRef.current = lenis
 

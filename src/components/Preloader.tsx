@@ -172,8 +172,11 @@ export function Preloader({ onReveal, stopScroll, startScroll }: PreloaderProps)
         </div>
 
         <div className="type-meta absolute inset-x-0 bottom-0 flex items-end justify-between px-5 pb-[max(2rem,calc(env(safe-area-inset-bottom)+1rem))] pt-5 text-white/45 sm:p-[clamp(1rem,3vw,2.5rem)]">
-          <span data-pl-meta>Software · Products · Technology</span>
-          <span data-pl-meta className="tabular-nums text-white">
+          <span data-pl-meta className="hidden sm:inline">Software · Products · Technology</span>
+          <span data-pl-meta className="absolute inset-x-0 bottom-[max(2rem,calc(env(safe-area-inset-bottom)+1rem))] text-center text-white/30 sm:bottom-[clamp(1rem,3vw,2.5rem)]">
+            Passion meets profession
+          </span>
+          <span data-pl-meta className="hidden tabular-nums text-white sm:inline">
             <span data-pl-count>000</span>
           </span>
         </div>

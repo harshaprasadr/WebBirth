@@ -297,14 +297,14 @@ export const justdialRating = { score: 5.0, count: 144 }
 
 /** Aggregate ratings strip. */
 export const ratingStats: { source: Source; score: string; detail: string }[] = [
-  { source: 'google', score: '4.9', detail: '104 Google reviews' },
-  { source: 'justdial', score: '5.0', detail: '144 Justdial ratings' },
+  { source: 'google', score: '4.9', detail: 'Google reviews' },
+  { source: 'justdial', score: '5.0', detail: 'Justdial ratings' },
 ]
 
 /** Headline proof points, animated as count-ups. Real, public figures. */
 export const proofPoints: { value: number; decimals?: number; suffix: string; label: string }[] = [
   { value: 4.9, decimals: 1, suffix: '', label: 'Average rating' },
-  { value: 500, suffix: '+', label: 'Projects delivered' },
+  { value: 1000, suffix: '+', label: 'Projects delivered' },
 ]
 
 /**

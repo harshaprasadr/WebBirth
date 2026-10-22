@@ -3,10 +3,8 @@ import {
   ArrowLeft,
   ArrowRight,
   ArrowUpRight,
-  Check,
   Heart,
   MoreVertical,
-  Share2,
   Star,
 } from 'lucide-react'
 import {
@@ -30,24 +28,10 @@ import { cn } from '@/lib/cn'
 /** Clean, authentic Google review card matching the real reviews verbatim. */
 function ReviewCard({ t }: { t: Testimonial }) {
   const [reacted, setReacted] = useState(false)
-  const [copied, setCopied] = useState(false)
 
   const handleReact = (e: React.MouseEvent) => {
     e.stopPropagation()
     setReacted((prev) => !prev)
-  }
-
-  const handleShare = async (e: React.MouseEvent) => {
-    e.stopPropagation()
-    try {
-      if (navigator.clipboard) {
-        await navigator.clipboard.writeText(`"${t.quote}" — ${t.name}`)
-        setCopied(true)
-        setTimeout(() => setCopied(false), 2000)
-      }
-    } catch {
-      // silent fallback
-    }
   }
 
   return (
@@ -116,22 +100,6 @@ function ReviewCard({ t }: { t: Testimonial }) {
           <span>{reacted ? 'Reacted' : 'Hover to react'}</span>
         </button>
 
-        <button
-          type="button"
-          onClick={handleShare}
-          title="Share review"
-          aria-label="Share review"
-          className="inline-flex items-center gap-1.5 text-xs font-medium transition-colors duration-200 hover:text-ink"
-        >
-          {copied ? (
-            <>
-              <Check className="size-4 text-accent" />
-              <span className="text-accent font-medium">Copied</span>
-            </>
-          ) : (
-            <Share2 className="size-4" strokeWidth={1.5} />
-          )}
-        </button>
       </div>
     </article>
   )
@@ -320,7 +288,7 @@ export function TestimonialsPage() {
                 out of 5
                 <br />
                 <span className="inline-flex items-center gap-1 underline decoration-ink/30 underline-offset-2 group-hover:decoration-ink">
-                  <CountUp to={googleRating.count} /> reviews ↗
+                  Google reviews ↗
                 </span>
               </p>
             </div>
@@ -451,7 +419,7 @@ export function TestimonialsPage() {
               mention most<span className="text-accent">.</span>
             </h2>
             <p data-reveal="fade" className="type-meta mt-4 text-muted">
-              From <CountUp to={justdialRating.count} /> Justdial reviews
+              Based on verified client feedback
             </p>
           </div>
           <ul className="flex flex-wrap gap-3 lg:col-span-8">
@@ -516,7 +484,7 @@ export function TestimonialsPage() {
               rel="noreferrer"
               className="group type-meta hidden md:inline-flex min-h-11 items-center gap-2 text-paper/70 hover:text-paper"
             >
-              <span className="link-reveal">Read all {googleRating.count} reviews on Google</span>
+              <span className="link-reveal">Read all reviews on Google</span>
               <ArrowUpRight className="size-3.5" strokeWidth={1.75} aria-hidden="true" />
             </a>
           </div>

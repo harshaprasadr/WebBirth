@@ -54,7 +54,7 @@ export function StatsSection() {
               <span>{s.label}</span>
               <span>{String(i + 1).padStart(2, '0')}</span>
             </dt>
-            <dd data-reveal="fade" className="order-1 flex items-start text-[clamp(5rem,14vw,14rem)] font-semibold leading-[0.82] tracking-[-0.07em]">
+            <dd data-reveal="fade" className="order-1 flex items-start text-[clamp(4rem,10vw,9rem)] font-semibold leading-[0.85] tracking-[-0.06em]">
               <span className="sr-only">
                 {s.value}
                 {s.suffix}

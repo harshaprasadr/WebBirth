@@ -89,13 +89,13 @@ export function CustomCursor() {
         ref={ringRef}
         className={cn(
           'absolute left-0 top-0 flex items-center justify-center rounded-full transition-[width,height,background-color,border-color,opacity] duration-500 ease-[var(--ease-expo)]',
-          !labelled && 'border border-white',
+          !labelled && 'border border-accent',
           labelled && 'bg-accent text-on-accent',
           mode === 'default' && 'size-9',
-          mode === 'link' && 'size-12 bg-white',
+          mode === 'link' && 'size-12 bg-accent',
           mode === 'button' && 'size-[4.5rem]',
           mode === 'text' && 'size-2 opacity-0',
-          mode === 'view' && 'size-28',
+          mode === 'view' && 'size-20',
           mode === 'drag' && 'size-24',
           (mode === 'hidden' || !visible) && 'opacity-0',
         )}

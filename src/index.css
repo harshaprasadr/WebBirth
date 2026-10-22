@@ -35,12 +35,29 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+  }
+
+  /* Smooth touch scrolling on iOS */
+  main, [role="dialog"] {
+    -webkit-overflow-scrolling: touch;
   }
 
   body {
     font-family: var(--font-sans);
     font-feature-settings: 'ss01', 'cv11';
     overflow-x: clip;
+    -webkit-tap-highlight-color: transparent;
+    overscroll-behavior-x: none;
+  }
+
+  html, body, #root {
+    overflow-x: clip;
+    max-width: 100vw;
   }
 
   ::selection {
@@ -57,6 +74,24 @@
   html.has-cursor,
   html.has-cursor * {
     cursor: none !important;
+  }
+  html.has-cursor input,
+  html.has-cursor textarea,
+  html.has-cursor select,
+  html.has-cursor [contenteditable] {
+    cursor: text !important;
+  }
+
+  /* Smooth active-state feedback on mobile taps */
+  @media (pointer: coarse) {
+    a, button, [role="button"] {
+      -webkit-tap-highlight-color: transparent;
+      transition-duration: 0.2s;
+    }
+    a:active, button:active, [role="button"]:active {
+      transform: scale(0.97);
+      transition-duration: 0.1s;
+    }
   }
 }
 
@@ -162,12 +197,36 @@
     padding-inline: clamp(1rem, 3.2vw, 3rem);
   }
 
+  /* Globally smooth all transitions. */
+  img {
+    content-visibility: auto;
+  }
+
   /* Masked line used by text reveals. */
   .line-mask {
     display: block;
     overflow: clip;
     padding-bottom: 0.06em;
     margin-bottom: -0.06em;
+  }
+
+  /* Thin, minimal scrollbar for textareas. */
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-ink) transparent;
+  }
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 4px;
+  }
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background: rgb(12 12 13 / 0.2);
+    border-radius: 4px;
+  }
+  .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+    background: rgb(12 12 13 / 0.35);
   }
 
   /* Underline reveal for text links. */
@@ -262,6 +321,22 @@
 [data-offscreen] *::before,
 [data-offscreen] *::after {
   animation-play-state: paused !important;
+}
+
+/* Promote pinned / scrubbed scenes to their own layer to avoid paint thrashing. */
+[data-scene-inner],
+[data-sc-stage],
+[data-sc-device] {
+  will-change: transform;
+  contain: layout style paint;
+}
+
+/* Smooth image rendering for scaled screenshots in device frames. */
+[data-sc-page],
+[data-scroll-shot] {
+  image-rendering: auto;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
 @keyframes marquee {
