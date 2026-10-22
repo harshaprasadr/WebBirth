@@ -212,7 +212,7 @@ export function CaseOutro({ next }: { next: Project }) {
                   {words.map((w) => (
                     <span
                       key={w}
-                      className="flex items-center gap-[0.35em] pr-[0.35em] text-[clamp(3.5rem,10vw,10.5rem)] font-semibold uppercase leading-none tracking-[-0.055em] even:text-transparent even:[-webkit-text-stroke:1.5px_rgb(243_242_238_/_0.55)]"
+                      className="flex items-center gap-[0.35em] pr-[0.35em] text-[clamp(3.5rem,10vw,10.5rem)] font-semibold uppercase leading-none tracking-[-0.055em] even:text-transparent even:[-webkit-text-stroke:2px_rgb(243_242_238_/_0.85)]"
                     >
                       {next.name}
                       <span className="inline-block size-[0.18em] rounded-full bg-accent" />
@@ -224,7 +224,7 @@ export function CaseOutro({ next }: { next: Project }) {
           </div>
 
           {/* details + preview */}
-          <div className="gutter relative z-10 mt-8 grid gap-8 lg:-mt-[clamp(2rem,4vw,4.5rem)] lg:grid-cols-12 lg:items-end lg:gap-10">
+          <div className="gutter relative z-10 mt-8 grid gap-8 lg:mt-4 lg:grid-cols-12 lg:items-end lg:gap-10">
             <div data-next-card className="lg:order-2 lg:col-span-7 lg:col-start-6">
               <div
                 className="relative aspect-[16/10] overflow-clip rounded-2xl border border-paper/10 shadow-[0_40px_90px_-40px_rgb(0_0_0_/_0.9)] transition-[transform,border-color] duration-700 ease-[var(--ease-expo)] group-hover:-translate-y-1.5 group-hover:border-paper/25 lg:rounded-[1.75rem]"
@@ -241,7 +241,7 @@ export function CaseOutro({ next }: { next: Project }) {
                     <span className="font-mono text-[0.68rem] uppercase tracking-widest text-paper/55">
                       {next.discipline}
                     </span>
-                    <span className="mt-3 text-[clamp(2.4rem,6vw,5.5rem)] font-semibold uppercase leading-[0.9] tracking-[-0.055em] text-transparent [-webkit-text-stroke:1.5px_rgb(243_242_238_/_0.7)] [text-wrap:balance]">
+                    <span className="mt-3 text-[clamp(2.4rem,6vw,5.5rem)] font-semibold uppercase leading-[0.9] tracking-[-0.055em] text-transparent [-webkit-text-stroke:2px_rgb(243_242_238_/_0.85)] [text-wrap:balance]">
                       {next.name}
                     </span>
                   </div>
@@ -255,7 +255,7 @@ export function CaseOutro({ next }: { next: Project }) {
             <div data-next-copy className="min-w-0 lg:order-1 lg:col-span-5 lg:pb-2">
               <span
                 aria-hidden="true"
-                className="hidden text-[clamp(5rem,9vw,8.5rem)] font-semibold leading-[0.8] tracking-[-0.06em] text-transparent [-webkit-text-stroke:1px_rgb(243_242_238_/_0.25)] lg:block"
+                className="hidden text-[clamp(5rem,9vw,8.5rem)] font-semibold leading-[0.8] tracking-[-0.06em] text-transparent [-webkit-text-stroke:1.5px_rgb(243_242_238_/_0.45)] lg:block"
               >
                 {nextNo}
               </span>
