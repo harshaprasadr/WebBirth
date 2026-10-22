@@ -55,7 +55,7 @@ Set `VITE_CONTACT_ENDPOINT` (see `.env.example`) to any endpoint that accepts a 
 
 ## Deploy
 
-`vercel.json` rewrites all routes to `index.html` so client-side routes like `/work/girani` resolve.
+The `dist/` folder contains a `.htaccess` that rewrites all routes to `index.html` so client-side routes like `/work/girani` resolve on Apache (Hostinger).
 
 ## Brand assets
 
