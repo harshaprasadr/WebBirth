@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 0c08a405d09666d355115532cc3e236e2a399fc2
 # WebBirth — website
 
 Editorial, motion-led company site for WebBirth (software development & digital products, Bengaluru).
@@ -65,6 +68,7 @@ The logo mark (`public/brand/webbirth-mark.*`) and the favicons and app icons (`
 ## Project visuals
 
 `public/projects/showcase/` holds the images behind each project card. Eight projects use live captures of the client site, taken in Oct 2026 and checked to still match WebBirth's work: a full desktop page that scrolls on hover, plus a phone screen. The rest use the website screen cropped from the portfolio mockup, or the phone screen for the apps. To re-capture a live site, screenshot it at 1440px (full page) and 390px@2x, then keep the file names. Do not link Zodiac's old domain: it now redirects to a spam site.
+<<<<<<< HEAD
 =======
 # webbirth_website
 
@@ -160,3 +164,5 @@ For open source projects, say how it is licensed.
 ## Project status
 If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
 >>>>>>> 29485e99beda9c881b07ad2d0790c86dcc669e89
+=======
+>>>>>>> 0c08a405d09666d355115532cc3e236e2a399fc2
