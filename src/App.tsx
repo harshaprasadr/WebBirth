@@ -34,8 +34,8 @@ export default function App() {
           <Route path="/work/:slug" element={<ProjectPage />} />
           <Route path="/testimonials" element={<TestimonialsPage />} />
           <Route path="/careers" element={<CareersPage />} />
-          <Route path="/privacy" element={<LegalPage kind="privacy" />} />
-          <Route path="/terms" element={<LegalPage kind="terms" />} />
+          <Route path="/privacy" element={<LegalPage key="privacy" kind="privacy" />} />
+          <Route path="/terms" element={<LegalPage key="terms" kind="terms" />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
         <Footer />
