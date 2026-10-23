@@ -19,7 +19,6 @@ export const showcase: Record<string, ShowcaseAsset> = {
 
   // ── Live captures (Oct 2026) ──────────────────────────────────────────────
   westvox: site(5371),
-  intakepilots: site(900),
   'ashtalakshmi-temple': site(3253),
   'aspen-capital': site(3590),
   '1960-physician-associates': site(2682),

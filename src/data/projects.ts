@@ -70,17 +70,6 @@ export const projects: Project[] = [
     deliverables: ['Web Development', 'UI / UX Design'],
   },
   {
-    slug: 'intakepilots',
-    name: 'Intake Pilots',
-    industry: 'Legal Lead Intake · USA',
-    discipline: 'Web Application',
-    summary:
-      'A bilingual marketer portal that tracks legal client leads and the intake pipeline in real time.',
-    tone: '#0a2140',
-    url: 'https://intakepilots.com/',
-    deliverables: ['Web Application', 'Dashboard', 'UI / UX Design'],
-  },
-  {
     slug: 'ashtalakshmi-temple',
     name: 'Ashtalakshmi Temple',
     industry: 'Cultural & Community Organization · Sugar Land, TX',

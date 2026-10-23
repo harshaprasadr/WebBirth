@@ -159,8 +159,7 @@ export function CaseOutro({ next }: { next: Project }) {
       <TransitionLink
         to={`/work/${next.slug}`}
         data-next
-        data-cursor="view"
-        data-cursor-label="Next"
+        data-cursor="default"
         data-nav-theme="dark"
         data-hides-cta
         className="group relative block overflow-clip bg-ink text-paper"
@@ -266,10 +265,10 @@ export function CaseOutro({ next }: { next: Project }) {
               <p className="mt-3 max-w-md text-[0.95rem] leading-relaxed text-paper/70 max-sm:line-clamp-3 sm:text-base lg:text-[1.05rem] [text-wrap:pretty]">
                 {next.summary}
               </p>
-              <span className="relative mt-7 flex min-h-14 items-center justify-between gap-5 overflow-clip rounded-full bg-paper py-1.5 pl-6 pr-1.5 text-[0.8rem] font-medium uppercase tracking-[0.06em] text-ink sm:inline-flex lg:mt-8">
-                <span className="absolute inset-0 origin-left scale-x-0 bg-accent transition-transform duration-700 ease-[var(--ease-expo)] group-hover:scale-x-100" />
+              <span className="group/btn relative mt-7 flex min-h-14 items-center justify-between gap-5 overflow-clip rounded-full bg-paper py-1.5 pl-6 pr-1.5 text-[0.8rem] font-medium uppercase tracking-[0.06em] text-ink sm:inline-flex lg:mt-8">
+                <span className="absolute inset-0 origin-left scale-x-0 bg-accent transition-transform duration-700 ease-[var(--ease-expo)] group-hover/btn:scale-x-100" />
                 <span className="relative">View next case</span>
-                <span className="relative flex size-11 items-center justify-center rounded-full bg-accent text-on-accent transition-all duration-500 group-hover:rotate-45 group-hover:bg-ink group-hover:text-paper">
+                <span className="relative flex size-11 items-center justify-center rounded-full bg-accent text-on-accent transition-all duration-500 group-hover/btn:rotate-45 group-hover/btn:bg-ink group-hover/btn:text-paper">
                   <ArrowUpRight className="size-4" strokeWidth={1.75} />
                 </span>
               </span>
