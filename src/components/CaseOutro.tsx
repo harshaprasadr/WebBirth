@@ -84,18 +84,19 @@ export function CaseOutro({ next }: { next: Project }) {
               scrollTrigger: { trigger: q("[data-next]")[0], start: "top bottom", end: "bottom top", scrub: true },
             },
           );
-        gsap
-          .timeline({
-            defaults: { ease: "case" },
-            scrollTrigger: { trigger: q("[data-next]")[0], start: "top 70%", once: true },
-          })
-          .fromTo(
-            q("[data-next-card]"),
+        const cardTl = gsap.timeline({
+          defaults: { ease: "case" },
+          scrollTrigger: { trigger: q("[data-next]")[0], start: "top 70%", once: true },
+        });
+        const card = q("[data-next-card]")[0];
+        if (card)
+          cardTl.fromTo(
+            card,
             { clipPath: "inset(18% 10% 18% 10% round 48px)", y: 40 },
             { clipPath: "inset(0% 0% 0% 0% round 0px)", y: 0, duration: 1.3, ease: "expo.inOut", clearProps: "clipPath" },
             0,
-          )
-          .from(q("[data-next-copy] > *"), { autoAlpha: 0, y: 26, duration: 1, stagger: 0.08 }, 0.35);
+          );
+        cardTl.from(q("[data-next-copy] > *"), { autoAlpha: 0, y: 26, duration: 1, stagger: 0.08 }, 0.35);
       });
 
       return () => mm.revert();
@@ -159,8 +160,7 @@ export function CaseOutro({ next }: { next: Project }) {
       <TransitionLink
         to={`/work/${next.slug}`}
         data-next
-        data-cursor="view"
-        data-cursor-label="Next"
+        data-cursor="default"
         data-nav-theme="dark"
         data-hides-cta
         className="group relative block overflow-clip bg-ink text-paper"
@@ -212,7 +212,7 @@ export function CaseOutro({ next }: { next: Project }) {
                   {words.map((w) => (
                     <span
                       key={w}
-                      className="flex items-center gap-[0.35em] pr-[0.35em] text-[clamp(3.5rem,10vw,10.5rem)] font-semibold uppercase leading-none tracking-[-0.055em] even:text-transparent even:[-webkit-text-stroke:1.5px_rgb(243_242_238_/_0.55)]"
+                      className="flex items-center gap-[0.35em] pr-[0.35em] text-[clamp(3.5rem,10vw,10.5rem)] font-semibold uppercase leading-none tracking-[-0.055em] even:text-transparent even:[-webkit-text-stroke:2px_rgb(243_242_238_/_0.85)]"
                     >
                       {next.name}
                       <span className="inline-block size-[0.18em] rounded-full bg-accent" />
@@ -224,38 +224,29 @@ export function CaseOutro({ next }: { next: Project }) {
           </div>
 
           {/* details + preview */}
-          <div className="gutter relative z-10 mt-8 grid gap-8 lg:-mt-[clamp(2rem,4vw,4.5rem)] lg:grid-cols-12 lg:items-end lg:gap-10">
-            <div data-next-card className="lg:order-2 lg:col-span-7 lg:col-start-6">
-              <div
-                className="relative aspect-[16/10] overflow-clip rounded-2xl border border-paper/10 shadow-[0_40px_90px_-40px_rgb(0_0_0_/_0.9)] transition-[transform,border-color] duration-700 ease-[var(--ease-expo)] group-hover:-translate-y-1.5 group-hover:border-paper/25 lg:rounded-[1.75rem]"
-                style={{
-                  background: `radial-gradient(90% 80% at 75% 20%, ${next.tone} 0%, #060606 75%)`,
-                }}
-              >
-                {hasPreview ? (
+          <div className="gutter relative z-10 mt-8 grid gap-8 lg:mt-4 lg:grid-cols-12 lg:items-end lg:gap-10">
+            {hasPreview && (
+              <div data-next-card className="lg:order-2 lg:col-span-7 lg:col-start-6">
+                <div
+                  className="relative aspect-[16/10] overflow-clip rounded-2xl border border-paper/10 shadow-[0_40px_90px_-40px_rgb(0_0_0_/_0.9)] transition-[transform,border-color] duration-700 ease-[var(--ease-expo)] group-hover:-translate-y-1.5 group-hover:border-paper/25 lg:rounded-[1.75rem]"
+                  style={{
+                    background: `radial-gradient(90% 80% at 75% 20%, ${next.tone} 0%, #060606 75%)`,
+                  }}
+                >
                   <div data-next-media className="absolute -inset-[4%]">
                     <ProjectMedia project={next} sizes="(min-width: 1024px) 55vw, 100vw" />
                   </div>
-                ) : (
-                  <div className="absolute inset-0 flex flex-col justify-end p-6 lg:p-10">
-                    <span className="font-mono text-[0.68rem] uppercase tracking-widest text-paper/55">
-                      {next.discipline}
-                    </span>
-                    <span className="mt-3 text-[clamp(2.4rem,6vw,5.5rem)] font-semibold uppercase leading-[0.9] tracking-[-0.055em] text-transparent [-webkit-text-stroke:1.5px_rgb(243_242_238_/_0.7)] [text-wrap:balance]">
-                      {next.name}
-                    </span>
-                  </div>
-                )}
-                <span className="absolute right-4 top-4 flex size-11 items-center justify-center rounded-full bg-paper/90 text-ink opacity-0 transition-all duration-500 group-hover:rotate-45 group-hover:opacity-100 max-lg:hidden">
-                  <ArrowUpRight className="size-4" strokeWidth={1.75} />
-                </span>
+                  <span className="absolute right-4 top-4 flex size-11 items-center justify-center rounded-full bg-paper/90 text-ink opacity-0 transition-all duration-500 group-hover:rotate-45 group-hover:opacity-100 max-lg:hidden">
+                    <ArrowUpRight className="size-4" strokeWidth={1.75} />
+                  </span>
+                </div>
               </div>
-            </div>
+            )}
 
-            <div data-next-copy className="min-w-0 lg:order-1 lg:col-span-5 lg:pb-2">
+            <div data-next-copy className={`min-w-0 lg:order-1 lg:pb-2 ${hasPreview ? "lg:col-span-5" : "lg:col-span-12"}`}>
               <span
                 aria-hidden="true"
-                className="hidden text-[clamp(5rem,9vw,8.5rem)] font-semibold leading-[0.8] tracking-[-0.06em] text-transparent [-webkit-text-stroke:1px_rgb(243_242_238_/_0.25)] lg:block"
+                className="hidden text-[clamp(5rem,9vw,8.5rem)] font-semibold leading-[0.8] tracking-[-0.06em] text-transparent [-webkit-text-stroke:1.5px_rgb(243_242_238_/_0.45)] lg:block"
               >
                 {nextNo}
               </span>
@@ -266,10 +257,10 @@ export function CaseOutro({ next }: { next: Project }) {
               <p className="mt-3 max-w-md text-[0.95rem] leading-relaxed text-paper/70 max-sm:line-clamp-3 sm:text-base lg:text-[1.05rem] [text-wrap:pretty]">
                 {next.summary}
               </p>
-              <span className="relative mt-7 flex min-h-14 items-center justify-between gap-5 overflow-clip rounded-full bg-paper py-1.5 pl-6 pr-1.5 text-[0.8rem] font-medium uppercase tracking-[0.06em] text-ink sm:inline-flex lg:mt-8">
-                <span className="absolute inset-0 origin-left scale-x-0 bg-accent transition-transform duration-700 ease-[var(--ease-expo)] group-hover:scale-x-100" />
+              <span className="group/btn relative mt-7 flex min-h-14 items-center justify-between gap-5 overflow-clip rounded-full bg-paper py-1.5 pl-6 pr-1.5 text-[0.8rem] font-medium uppercase tracking-[0.06em] text-ink sm:inline-flex lg:mt-8">
+                <span className="absolute inset-0 origin-left scale-x-0 bg-accent transition-transform duration-700 ease-[var(--ease-expo)] group-hover/btn:scale-x-100" />
                 <span className="relative">View next case</span>
-                <span className="relative flex size-11 items-center justify-center rounded-full bg-accent text-on-accent transition-all duration-500 group-hover:rotate-45 group-hover:bg-ink group-hover:text-paper">
+                <span className="relative flex size-11 items-center justify-center rounded-full bg-accent text-on-accent transition-all duration-500 group-hover/btn:rotate-45 group-hover/btn:bg-ink group-hover/btn:text-paper">
                   <ArrowUpRight className="size-4" strokeWidth={1.75} />
                 </span>
               </span>

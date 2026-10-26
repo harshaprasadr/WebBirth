@@ -3,7 +3,6 @@ import { ArrowDown, ArrowRight, ArrowUpRight } from 'lucide-react'
 import { gsap, ScrollTrigger, useGSAP } from '@/lib/gsap'
 import { hasWebGL, sceneState, useNearViewport } from '@/lib/webgl'
 import { prefersReducedMotion } from '@/lib/env'
-import { company } from '@/data/site'
 import { useReducedMotion } from '@/hooks/useMediaQuery'
 import { cn } from '@/lib/cn'
 import { Magnetic } from './Magnetic'
@@ -113,7 +112,7 @@ export function Hero() {
           src="/brand/webbirth-mark-lg.webp?v=2"
           alt=""
           aria-hidden="true"
-          className="pointer-events-none absolute right-[8%] top-1/2 w-[min(38vw,34rem)] -translate-y-1/2 opacity-90 max-md:right-1/2 max-md:top-[58%] max-md:w-[60vw] max-md:translate-x-1/2"
+          className="pointer-events-none absolute right-[8%] top-1/2 w-[min(38vw,34rem)] -translate-y-1/2 opacity-90 max-md:left-1/2 max-md:right-auto max-md:top-1/2 max-md:w-[55vw] max-md:-translate-x-1/2"
         />
       )}
 
@@ -143,12 +142,9 @@ export function Hero() {
               Technology
             </span>
           </p>
-          <p className="hidden sm:block">
-            {company.city}, {company.country} — Est. {company.founded}
-          </p>
         </div>
 
-        <div className="flex min-h-0 flex-1 flex-col justify-center max-md:justify-start max-md:pt-8">
+        <div className="flex min-h-0 flex-1 flex-col justify-center max-md:justify-between max-md:pb-2 max-md:pt-4">
           <h1
             ref={titleRef}
             id="hero-title"
@@ -162,14 +158,14 @@ export function Hero() {
             {/* wide screens: two lines */}
             <span className="line-mask max-md:hidden">
               <span data-line data-gl-line className="block">
-                <span data-seg="outline" className="text-outline-light">What’s </span>
+                <span data-seg="outline" className="text-outline-light">What's </span>
                 <span data-seg="solid">next</span>
               </span>
             </span>
             {/* phones: three lines */}
             <span className="line-mask md:hidden">
               <span data-line data-gl-line className="block">
-                <span data-seg="outline" className="text-outline-light">What’s</span>
+                <span data-seg="outline" className="text-outline-light">What's</span>
               </span>
             </span>
             <span className="line-mask md:hidden">
@@ -178,51 +174,49 @@ export function Hero() {
               </span>
             </span>
           </h1>
-        </div>
 
-        <div className="grid items-end gap-6 pb-6 pt-6 md:grid-cols-12 lg:pt-8">
-          <div className="md:col-span-7 lg:col-span-6">
-            <p data-hero-in data-hero-copy className="max-w-[31rem] text-[clamp(1rem,1.15vw,1.2rem)] leading-[1.55] text-paper/70">
-              We design and engineer digital products, custom software and technology experiences that help ambitious
-              businesses move forward.
-            </p>
-            <div data-hero-in data-hero-cta className="pointer-events-auto mt-6 flex flex-wrap items-center gap-x-8 gap-y-3">
-              <Magnetic strength={0.22}>
+          <div className="mt-8 md:mt-10 md:grid md:grid-cols-12 md:items-end md:gap-6">
+            <div className="md:col-span-7 lg:col-span-6">
+              <p data-hero-in data-hero-copy className="max-w-[31rem] text-[clamp(1rem,1.15vw,1.2rem)] leading-[1.55] text-paper/70">
+                We combine innovative design, custom software development, and strategic digital marketing to build impactful digital experiences that move businesses forward
+              </p>
+              <div data-hero-in data-hero-cta className="pointer-events-auto mt-6 flex flex-wrap items-center gap-x-8 gap-y-3">
+                <Magnetic strength={0.22}>
+                  <button
+                    type="button"
+                    onClick={() => scrollTo('#contact')}
+                    className="group relative inline-flex min-h-14 items-center gap-4 overflow-clip rounded-full bg-paper pl-7 pr-2 text-[0.82rem] font-medium uppercase tracking-[0.05em] text-ink transition-transform duration-500 ease-[var(--ease-expo)] hover:scale-[1.03] active:scale-[0.98]"
+                  >
+                    <span
+                      aria-hidden="true"
+                      className="absolute inset-0 translate-y-full rounded-full bg-accent transition-transform duration-700 ease-[var(--ease-expo)] group-hover:translate-y-0 group-focus-visible:translate-y-0"
+                    />
+                    <span className="relative">
+                      <RollText>Let's build something</RollText>
+                    </span>
+                    <span aria-hidden="true" className="relative flex size-10 items-center justify-center overflow-clip rounded-full bg-ink text-paper">
+                      <ArrowUpRight
+                        className="size-4 transition-transform duration-500 ease-[var(--ease-expo)] group-hover:-translate-y-[150%] group-hover:translate-x-[150%]"
+                        strokeWidth={1.75}
+                      />
+                      <ArrowUpRight
+                        className="absolute size-4 -translate-x-[150%] translate-y-[150%] transition-transform duration-500 ease-[var(--ease-expo)] group-hover:translate-x-0 group-hover:translate-y-0"
+                        strokeWidth={1.75}
+                      />
+                    </span>
+                  </button>
+                </Magnetic>
                 <button
                   type="button"
-                  onClick={() => scrollTo('#contact')}
-                  className="group relative inline-flex min-h-14 items-center gap-4 overflow-clip rounded-full bg-paper pl-7 pr-2 text-[0.82rem] font-medium uppercase tracking-[0.05em] text-ink transition-transform duration-500 ease-[var(--ease-expo)] hover:scale-[1.03] active:scale-[0.98]"
+                  onClick={() => scrollTo('#work')}
+                  className="group type-meta hidden min-h-11 items-center gap-2 text-paper sm:inline-flex"
                 >
-                  <span
-                    aria-hidden="true"
-                    className="absolute inset-0 translate-y-full rounded-full bg-accent transition-transform duration-700 ease-[var(--ease-expo)] group-hover:translate-y-0 group-focus-visible:translate-y-0"
-                  />
-                  <span className="relative">
-                    <RollText>Let’s build something</RollText>
-                  </span>
-                  <span aria-hidden="true" className="relative flex size-10 items-center justify-center overflow-clip rounded-full bg-ink text-paper">
-                    <ArrowUpRight
-                      className="size-4 transition-transform duration-500 ease-[var(--ease-expo)] group-hover:-translate-y-[150%] group-hover:translate-x-[150%]"
-                      strokeWidth={1.75}
-                    />
-                    <ArrowUpRight
-                      className="absolute size-4 -translate-x-[150%] translate-y-[150%] transition-transform duration-500 ease-[var(--ease-expo)] group-hover:translate-x-0 group-hover:translate-y-0"
-                      strokeWidth={1.75}
-                    />
-                  </span>
+                  <span className="link-reveal">View our work</span>
+                  <ArrowRight className="size-3.5 transition-transform duration-500 group-hover:translate-x-1" strokeWidth={1.75} aria-hidden="true" />
                 </button>
-              </Magnetic>
-              <button
-                type="button"
-                onClick={() => scrollTo('#work')}
-                className="group type-meta inline-flex min-h-11 items-center gap-2 text-paper"
-              >
-                <span className="link-reveal">View our work</span>
-                <ArrowRight className="size-3.5 transition-transform duration-500 group-hover:translate-x-1" strokeWidth={1.75} aria-hidden="true" />
-              </button>
+              </div>
             </div>
           </div>
-
         </div>
 
         <div data-hero-in data-hero-rail className="type-meta flex items-center justify-between gap-6 border-t border-paper/10 pt-3 text-paper/55">
@@ -238,7 +232,6 @@ export function Hero() {
               </li>
             ))}
           </ul>
-          <span className="sm:hidden">Est. {company.founded}</span>
         </div>
       </div>
     </section>

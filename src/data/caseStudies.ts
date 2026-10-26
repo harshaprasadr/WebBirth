@@ -88,25 +88,6 @@ export const caseStudies: Record<string, CaseStudy> = {
     ],
   },
 
-  intakepilots: {
-    tech: ['React', 'TypeScript', 'Node.js', 'MongoDB', 'Socket.io', 'Tailwind CSS'],
-    problemStatement:
-      'Legal marketing teams had no real-time visibility into lead quality, intake pipeline stages, or campaign attribution — across English and Spanish-speaking markets.',
-    timeline: [
-      { phase: 'Requirements & Scoping', duration: '1 week' },
-      { phase: 'UX Design', duration: '2 weeks' },
-      { phase: 'Development', duration: '6 weeks' },
-      { phase: 'Testing & Launch', duration: '1 week' },
-    ],
-    resolved:
-      'A bilingual marketer portal with real-time lead tracking, visual pipeline stages, and source attribution — giving teams instant clarity on intake performance and campaign ROI.',
-    useCases: [
-      { title: 'Live Lead Tracking', description: 'Real-time feed of incoming leads with intake status and case-type tagging.' },
-      { title: 'Pipeline View', description: 'Visual pipeline with stage transitions, dispositions, and conversion metrics.' },
-      { title: 'Bilingual Interface', description: 'Full English and Spanish interface for cross-market lead management.' },
-      { title: 'Source Attribution', description: 'Track which campaigns and channels are generating the highest-quality leads.' },
-    ],
-  },
 
   'ashtalakshmi-temple': {
     tech: ['React', 'Node.js', 'PostgreSQL', 'Razorpay', 'AWS S3', 'Resend'],

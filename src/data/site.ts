@@ -30,8 +30,9 @@ export const navItems = [
   { id: 'work', label: 'Work', index: '01', to: '/#work' },
   { id: 'services', label: 'Services', index: '02', to: '/#services' },
   { id: 'about', label: 'About', index: '03', to: '/#about' },
-  { id: 'careers', label: 'Careers', index: '04', to: '/#careers' },
-  { id: 'contact', label: 'Contact', index: '05', to: '/#contact' },
+  { id: 'blogs', label: 'Blogs', index: '04', to: '/#blogs' },
+  { id: 'careers', label: 'Careers', index: '05', to: '/#careers' },
+  { id: 'contact', label: 'Contact', index: '06', to: '/#contact' },
 ] as const
 
 const yearsActive = new Date().getFullYear() - company.founded
@@ -40,7 +41,7 @@ export const stats = [
   { value: 1000, suffix: '+', label: 'Clients served' },
   { value: 15, suffix: '+', label: 'Countries reached' },
   { value: 20, suffix: '+', label: 'Industries served' },
-  { value: yearsActive, suffix: '', label: `Years building · since ${company.founded}`, pad: 2 },
+  { value: yearsActive, suffix: '+', label: `Years building · since ${company.founded}`, pad: 2 },
 ] as const
 
 export type ServiceKind =
@@ -57,7 +58,7 @@ export type ServiceKind =
 export const services: { kind: ServiceKind; title: string; description: string; tags: string[] }[] = [
   {
     kind: 'design',
-    title: 'UI / UX Design',
+    title: 'UI / UX & Graphic Design',
     description:
       'Elevate your online presence and engage your audience with creative UI/UX — visually stunning web and mobile app designs, and branding that makes your brand shine.',
     tags: ['Web Design', 'App Design', 'Branding'],
@@ -73,7 +74,7 @@ export const services: { kind: ServiceKind; title: string; description: string; 
     kind: 'commerce',
     title: 'E-Commerce Website',
     description:
-      'Comprehensive e-commerce solutions that revolutionise your online business and elevate your sales and customer experience.',
+      'Comprehensive e-commerce solutions with secure payment gateway integration, seamless shipping and delivery management, and intuitive shopping experiences designed to streamline your online business, boost sales, and elevate customer satisfaction.',
     tags: ['Online Stores', 'Payments', 'Catalogues'],
   },
   {
@@ -94,7 +95,7 @@ export const services: { kind: ServiceKind; title: string; description: string; 
     kind: 'marketing',
     title: 'Digital Marketing',
     description:
-      'Empower your brand online with SEO, social media marketing and more — amplifying your presence and driving real results.',
+      'Elevate your digital presence with SEO, AEO, GEO, social media marketing, and more - building brand visibility, engaging the right audience, and delivering measurable growth.',
     tags: ['SEO', 'Social Media', 'Performance'],
   },
 ]

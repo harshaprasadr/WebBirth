@@ -20,7 +20,8 @@ export function InsightsSection() {
   const [lead, ...rest] = posts
 
   return (
-    <section ref={scope} id="journal" aria-labelledby="journal-title" className="gutter relative bg-paper section-y">
+    <section ref={scope} id="blogs" aria-labelledby="journal-title" className="gutter relative bg-paper section-y">
+      <div id="journal" className="sr-only" aria-hidden="true" />
       <SectionHeader
         id="journal-title"
         label="Blogs"
@@ -32,7 +33,7 @@ export function InsightsSection() {
             <ArrowUpRight className="size-3.5" strokeWidth={1.75} aria-hidden="true" />
           </a>
         }
-        intro="Practical notes from our team on web, mobile, design and growth — written for business owners, not just developers."
+        intro="Practical notes from our team on web, mobile, design and growth - written for business owners, not just developers."
       />
 
       <div className="section-gap grid gap-x-[clamp(1.5rem,4vw,4rem)] gap-y-12 lg:grid-cols-12">

@@ -122,7 +122,7 @@ export function TechnologyNetwork() {
           label="Technology"
           title={['Built with', 'purpose.']}
           aside={`(${technologies.length})`}
-          intro="We choose tools for the problem, not the trend — a modern, proven stack across web, mobile, server, data, cloud and AI."
+          intro="We choose tools for the problem, not the trend - a modern, proven stack across web, mobile, server, data, cloud and AI."
           dark
           titleClassName="uppercase"
         />

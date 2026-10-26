@@ -113,7 +113,7 @@ export function ServiceList() {
           ref={previewRef}
           aria-hidden="true"
           className={cn(
-            'pointer-events-none fixed left-0 top-0 z-30 w-[17rem] shadow-[0_30px_80px_-30px_rgba(12,12,13,0.35)] transition-[opacity,clip-path] duration-500 ease-[var(--ease-expo)]',
+            'pointer-events-none fixed left-0 top-0 z-30 w-[17rem] rounded-2xl shadow-[0_30px_80px_-30px_rgba(12,12,13,0.25)] transition-[opacity,clip-path] duration-500 ease-[var(--ease-expo)]',
             active === null
               ? 'opacity-0 [clip-path:inset(50%_50%_50%_50%)]'
               : 'opacity-100 [clip-path:inset(0%_0%_0%_0%)]',

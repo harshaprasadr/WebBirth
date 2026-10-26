@@ -3,8 +3,6 @@ import {
   ArrowLeft,
   ArrowRight,
   ArrowUpRight,
-  Heart,
-  MoreVertical,
   Star,
 } from 'lucide-react'
 import {
@@ -27,28 +25,21 @@ import { cn } from '@/lib/cn'
 
 /** Clean, authentic Google review card matching the real reviews verbatim. */
 function ReviewCard({ t }: { t: Testimonial }) {
-  const [reacted, setReacted] = useState(false)
-
-  const handleReact = (e: React.MouseEvent) => {
-    e.stopPropagation()
-    setReacted((prev) => !prev)
-  }
-
   return (
-    <article className="group flex w-[85vw] sm:w-[380px] md:w-[410px] lg:w-[430px] shrink-0 snap-start flex-col justify-between rounded-2xl border border-line bg-paper-2/45 p-6 sm:p-7 transition-all duration-300 hover:border-ink/20 hover:bg-paper-2/70 hover:shadow-[0_12px_28px_-10px_rgba(12,12,13,0.06)]">
-      <div>
+    <article className="group relative flex w-[85vw] sm:w-[380px] md:w-[410px] lg:w-[430px] shrink-0 snap-start flex-col justify-between overflow-hidden rounded-3xl border border-line/80 bg-paper-2/40 backdrop-blur-sm transition-all duration-500 hover:border-ink/15 hover:shadow-[0_20px_50px_-16px_rgba(12,12,13,0.10)]">
+      <div className="relative z-10 p-7 sm:p-8">
         {/* Reviewer Header */}
         <div className="flex items-start justify-between gap-3">
-          <div className="flex items-center gap-3.5">
+          <div className="flex items-center gap-4">
             <Avatar
               name={t.name}
               color={t.avatarColor}
               image={t.avatarImg}
-              className="size-10 text-sm font-semibold"
+              className="size-11 text-sm font-semibold ring-2 ring-paper ring-offset-1 ring-offset-paper-2"
             />
             <div className="min-w-0">
               <p className="truncate text-[0.98rem] font-semibold leading-tight text-ink">{t.name}</p>
-              <p className="type-meta mt-1 text-muted">{t.reviewInfo}</p>
+              <p className="type-meta mt-1.5 text-muted/80">{t.reviewInfo}</p>
             </div>
           </div>
 
@@ -57,50 +48,38 @@ function ReviewCard({ t }: { t: Testimonial }) {
             target="_blank"
             rel="noreferrer"
             aria-label="View on Google"
-            className="text-muted/50 transition-colors hover:text-ink p-1 -mr-1"
+            className="shrink-0 rounded-full border border-line/60 bg-paper/60 p-2 text-muted/70 transition-all duration-300 hover:border-accent/40 hover:bg-accent/8 hover:text-accent hover:scale-105"
           >
-            <MoreVertical className="size-4" />
+            <ArrowUpRight className="size-3.5" strokeWidth={2.2} />
           </a>
         </div>
 
         {/* Rating Stars & Relative Date */}
-        <div className="mt-3.5 flex items-center gap-2.5">
+        <div className="mt-5 flex items-center gap-3">
           <span role="img" className="inline-flex items-center gap-0.5" aria-label={`${t.rating} out of 5 stars`}>
             {Array.from({ length: 5 }, (_, i) => (
               <Star
                 key={i}
                 className={cn(
-                  'size-[1.05rem]',
+                  'size-[1.1rem]',
                   i < t.rating ? 'fill-amber-400 text-amber-400' : 'text-line fill-paper-2',
                 )}
-                strokeWidth={1}
+                strokeWidth={0.5}
               />
             ))}
           </span>
-          <span className="type-meta text-muted">{t.timeAgo}</span>
+          <span className="h-3 w-px bg-line/80" />
+          <span className="type-meta text-muted/70">{t.timeAgo}</span>
         </div>
 
         {/* Verbatim Review Quote */}
-        <p className="mt-4 text-[0.98rem] sm:text-[1.02rem] font-normal leading-[1.68] text-ink/85">
+        <p className="mt-5 text-[0.98rem] sm:text-[1.02rem] font-normal leading-[1.75] text-ink/80">
           {t.quote}
         </p>
       </div>
 
-      {/* Google Review Interaction Bar */}
-      <div className="mt-6 flex items-center justify-between border-t border-line/60 pt-4 text-muted">
-        <button
-          type="button"
-          onClick={handleReact}
-          className={cn(
-            'inline-flex items-center gap-2 text-xs font-medium transition-colors duration-200',
-            reacted ? 'text-accent' : 'hover:text-ink',
-          )}
-        >
-          <Heart className={cn('size-4', reacted && 'fill-accent text-accent')} strokeWidth={1.5} />
-          <span>{reacted ? 'Reacted' : 'Hover to react'}</span>
-        </button>
-
-      </div>
+      {/* Subtle accent glow on hover */}
+      <div className="pointer-events-none absolute -bottom-8 -right-8 size-32 rounded-full bg-accent/[0.03] blur-2xl transition-all duration-500 group-hover:bg-accent/[0.07] group-hover:scale-150" />
     </article>
   )
 }
@@ -320,7 +299,7 @@ export function TestimonialsPage() {
                 out of 5
                 <br />
                 <span className="inline-flex items-center gap-1 text-paper underline decoration-paper/30 underline-offset-2 group-hover:decoration-paper">
-                  <CountUp to={justdialRating.count} /> ratings ↗
+                  justdial reviews ↗
                 </span>
               </p>
             </div>
@@ -451,9 +430,9 @@ export function TestimonialsPage() {
         <div className="relative grid items-end gap-10 lg:grid-cols-12">
           <div className="lg:col-span-8">
             <h2 id="tt-cta" data-reveal="lines" className="type-h2 uppercase">
-              Let’s earn
+              OUR SUCCESS
               <br />
-              yours next<span className="text-accent">.</span>
+              IN <span className="text-accent">THEIR WORDS.</span>
             </h2>
             <p data-reveal="fade" className="type-lead mt-6 max-w-lg text-paper/65">
               Tell us what you’re building — and join the clients rating us 4.9 on Google.

@@ -136,7 +136,9 @@ export function ProjectMedia({ project, className, sizes = '(min-width: 1024px) 
                   'block w-full',
                   scrollable
                     ? 'h-auto transition-transform duration-[7s] ease-[cubic-bezier(0.45,0,0.2,1)] group-hover:[transform:translateY(var(--travel))] motion-reduce:transition-none'
-                    : 'h-full object-cover object-top transition-transform duration-[1.4s] ease-[var(--ease-expo)] group-hover:scale-[1.04]',
+                    : asset.kind === 'crop'
+                      ? 'h-auto'
+                      : 'h-full object-cover object-top transition-transform duration-[1.4s] ease-[var(--ease-expo)] group-hover:scale-[1.04]',
                 )}
                 style={scrollable ? ({ '--travel': `${travel}%` } as CSSProperties) : undefined}
               />

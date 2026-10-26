@@ -6,7 +6,7 @@
 export type Source = 'google' | 'justdial'
 
 export const sourceMeta: Record<Source, { label: string; href: string }> = {
-  google: { label: 'Google', href: 'https://www.google.com/search?q=webbirth+bengaluru' },
+  google: { label: 'Google', href: 'https://www.google.com/search?q=webbirth+bengaluru#lrd=0x3bae3fbdbbf9b6a1:0x40c358680140f161,1,,,,' },
   justdial: { label: 'Justdial', href: 'https://www.justdial.com/Bangalore/Webbirth-Pvt-Ltd-Ullalu' },
 }
 

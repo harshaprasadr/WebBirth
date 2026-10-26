@@ -24,7 +24,6 @@ export const workCategories: WorkCategory[] = [
       'cazenest',
       'zenith-health',
       'westvox',
-      'intakepilots',
       'ashtalakshmi-temple',
       'aspen-capital',
       'worth-and-right',

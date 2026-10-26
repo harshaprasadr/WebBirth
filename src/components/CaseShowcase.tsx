@@ -145,7 +145,7 @@ export function CaseShowcase({ project }: { project: Project }) {
           <span
             data-sc-name
             aria-hidden="true"
-            className="pointer-events-none absolute -bottom-[3vw] left-0 select-none whitespace-nowrap will-change-transform text-[22vw] font-semibold uppercase leading-none tracking-[-0.06em] text-transparent [-webkit-text-stroke:1px_rgb(255_255_255_/_0.13)]"
+            className="pointer-events-none absolute -bottom-[3vw] left-0 select-none whitespace-nowrap will-change-transform text-[22vw] font-semibold uppercase leading-none tracking-[-0.06em] text-transparent [-webkit-text-stroke:1.5px_rgb(255_255_255_/_0.3)]"
           >
             {project.name} — {project.name}
           </span>
