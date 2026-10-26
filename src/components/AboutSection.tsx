@@ -61,7 +61,7 @@ export function AboutSection() {
           </p>
           <p data-reveal="fade" data-delay="0.1" className="type-body text-ink/65">
             We combine design, engineering and technology to create scalable digital experiences for modern
-            businesses — in India and across 15+ countries.
+            businesses - in India and across 15+ countries.
           </p>
           <dl className="mt-4 border-t border-line">
             {facts.map((f, i) => (

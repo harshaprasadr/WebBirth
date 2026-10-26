@@ -4,7 +4,7 @@ import { useGSAP } from '@/lib/gsap'
 import { registerReveals } from '@/animations/reveal'
 import { useDocumentTitle } from '@/hooks/useDocumentTitle'
 
-type Doc = { title: string; updated: string; sections: { h: string; p: string[] }[] }
+type Doc = { title: string; updated?: string; sections: { h: string; p: string[] }[] }
 
 /**
  * Plain-language baseline copy. Have it reviewed by counsel before relying on it.
@@ -12,7 +12,6 @@ type Doc = { title: string; updated: string; sections: { h: string; p: string[] 
 const docs: Record<'privacy' | 'terms', Doc> = {
   privacy: {
     title: 'Privacy Policy',
-    updated: 'October 2026',
     sections: [
       {
         h: 'Who we are',
@@ -103,7 +102,6 @@ const docs: Record<'privacy' | 'terms', Doc> = {
   },
   terms: {
     title: 'Terms & Conditions',
-    updated: 'October 2026',
     sections: [
       {
         h: 'Services offered',
@@ -176,7 +174,7 @@ export function LegalPage({ kind }: { kind: keyof typeof docs }) {
       <p className="type-meta flex items-center gap-4 text-muted">
         <span>Legal</span>
         <span className="flex-1" aria-hidden="true" />
-        <span>Updated {doc.updated}</span>
+        
       </p>
       <h1 data-reveal="lines" className="type-display mt-12 uppercase">
         {doc.title}

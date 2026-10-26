@@ -42,8 +42,8 @@ export const showcase: Record<string, ShowcaseAsset> = {
   bussguru: { kind: 'live', desktop: { w: 1200, h: 1996 }, mobile: { w: 420, h: 2681 }, apps: appScreens },
   girani: { kind: 'live', desktop: { w: 1200, h: 3715 }, mobile: { w: 420, h: 2566 }, apps: appScreens },
   'ramanuja-kuteera': { kind: 'live', desktop: { w: 1200, h: 4446 }, mobile: { w: 420, h: 2526 }, apps: appScreens },
-  'swa-adhyay': { kind: 'live', desktop: { w: 1200, h: 4365 }, mobile: { w: 420, h: 9564 } },
-  'superior-solar': { kind: 'live', desktop: { w: 1200, h: 6720 }, mobile: { w: 420, h: 12963 } },
+  'swa-adhyay': { kind: 'live', desktop: { w: 1200, h: 4365 } },
+  'superior-solar': { kind: 'live', desktop: { w: 1200, h: 6720 } },
 
   // ── App only ──────────────────────────────────────────────────────────────
   'sanchara-mitra-mechanic': { kind: 'app', apps: appScreens },

@@ -84,18 +84,19 @@ export function CaseOutro({ next }: { next: Project }) {
               scrollTrigger: { trigger: q("[data-next]")[0], start: "top bottom", end: "bottom top", scrub: true },
             },
           );
-        gsap
-          .timeline({
-            defaults: { ease: "case" },
-            scrollTrigger: { trigger: q("[data-next]")[0], start: "top 70%", once: true },
-          })
-          .fromTo(
-            q("[data-next-card]"),
+        const cardTl = gsap.timeline({
+          defaults: { ease: "case" },
+          scrollTrigger: { trigger: q("[data-next]")[0], start: "top 70%", once: true },
+        });
+        const card = q("[data-next-card]")[0];
+        if (card)
+          cardTl.fromTo(
+            card,
             { clipPath: "inset(18% 10% 18% 10% round 48px)", y: 40 },
             { clipPath: "inset(0% 0% 0% 0% round 0px)", y: 0, duration: 1.3, ease: "expo.inOut", clearProps: "clipPath" },
             0,
-          )
-          .from(q("[data-next-copy] > *"), { autoAlpha: 0, y: 26, duration: 1, stagger: 0.08 }, 0.35);
+          );
+        cardTl.from(q("[data-next-copy] > *"), { autoAlpha: 0, y: 26, duration: 1, stagger: 0.08 }, 0.35);
       });
 
       return () => mm.revert();
@@ -224,34 +225,25 @@ export function CaseOutro({ next }: { next: Project }) {
 
           {/* details + preview */}
           <div className="gutter relative z-10 mt-8 grid gap-8 lg:mt-4 lg:grid-cols-12 lg:items-end lg:gap-10">
-            <div data-next-card className="lg:order-2 lg:col-span-7 lg:col-start-6">
-              <div
-                className="relative aspect-[16/10] overflow-clip rounded-2xl border border-paper/10 shadow-[0_40px_90px_-40px_rgb(0_0_0_/_0.9)] transition-[transform,border-color] duration-700 ease-[var(--ease-expo)] group-hover:-translate-y-1.5 group-hover:border-paper/25 lg:rounded-[1.75rem]"
-                style={{
-                  background: `radial-gradient(90% 80% at 75% 20%, ${next.tone} 0%, #060606 75%)`,
-                }}
-              >
-                {hasPreview ? (
+            {hasPreview && (
+              <div data-next-card className="lg:order-2 lg:col-span-7 lg:col-start-6">
+                <div
+                  className="relative aspect-[16/10] overflow-clip rounded-2xl border border-paper/10 shadow-[0_40px_90px_-40px_rgb(0_0_0_/_0.9)] transition-[transform,border-color] duration-700 ease-[var(--ease-expo)] group-hover:-translate-y-1.5 group-hover:border-paper/25 lg:rounded-[1.75rem]"
+                  style={{
+                    background: `radial-gradient(90% 80% at 75% 20%, ${next.tone} 0%, #060606 75%)`,
+                  }}
+                >
                   <div data-next-media className="absolute -inset-[4%]">
                     <ProjectMedia project={next} sizes="(min-width: 1024px) 55vw, 100vw" />
                   </div>
-                ) : (
-                  <div className="absolute inset-0 flex flex-col justify-end p-6 lg:p-10">
-                    <span className="font-mono text-[0.68rem] uppercase tracking-widest text-paper/55">
-                      {next.discipline}
-                    </span>
-                    <span className="mt-3 text-[clamp(2.4rem,6vw,5.5rem)] font-semibold uppercase leading-[0.9] tracking-[-0.055em] text-transparent [-webkit-text-stroke:2px_rgb(243_242_238_/_0.85)] [text-wrap:balance]">
-                      {next.name}
-                    </span>
-                  </div>
-                )}
-                <span className="absolute right-4 top-4 flex size-11 items-center justify-center rounded-full bg-paper/90 text-ink opacity-0 transition-all duration-500 group-hover:rotate-45 group-hover:opacity-100 max-lg:hidden">
-                  <ArrowUpRight className="size-4" strokeWidth={1.75} />
-                </span>
+                  <span className="absolute right-4 top-4 flex size-11 items-center justify-center rounded-full bg-paper/90 text-ink opacity-0 transition-all duration-500 group-hover:rotate-45 group-hover:opacity-100 max-lg:hidden">
+                    <ArrowUpRight className="size-4" strokeWidth={1.75} />
+                  </span>
+                </div>
               </div>
-            </div>
+            )}
 
-            <div data-next-copy className="min-w-0 lg:order-1 lg:col-span-5 lg:pb-2">
+            <div data-next-copy className={`min-w-0 lg:order-1 lg:pb-2 ${hasPreview ? "lg:col-span-5" : "lg:col-span-12"}`}>
               <span
                 aria-hidden="true"
                 className="hidden text-[clamp(5rem,9vw,8.5rem)] font-semibold leading-[0.8] tracking-[-0.06em] text-transparent [-webkit-text-stroke:1.5px_rgb(243_242_238_/_0.45)] lg:block"

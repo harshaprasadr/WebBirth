@@ -42,7 +42,7 @@ export const projects: Project[] = [
     industry: 'Legal Case Management · USA',
     discipline: 'Web Application',
     summary:
-      'A practice management workspace for case teams, parties, matters, tasks, damages and team workload in one place.',
+      'A centralized legal practice management solution to manage attorneys, parties, cases, tasks, damages, and team workloads efficiently-all in one streamlined workspace.',
     tone: '#111a2e',
     deliverables: ['Web Application', 'Dashboard', 'UI / UX Design'],
     featured: true,
@@ -53,7 +53,7 @@ export const projects: Project[] = [
     industry: 'Healthcare · USA',
     discipline: 'Intranet Portal',
     summary:
-      'An employee intranet for a health systems, events, announcements, policies, IT tickets and the staff directory in one hub.',
+      'An intranet for a health systems, events, announcements, policies, IT tickets and the staff directory in one hub.',
     tone: '#151a4d',
     deliverables: ['Web Application', 'Intranet', 'UI / UX Design'],
     featured: true,
@@ -199,7 +199,7 @@ export const projects: Project[] = [
     industry: 'Real Estate',
     discipline: 'Property Platform',
     summary:
-      'A property platform to buy, sell and rent plots, apartments, villas and commercial spaces across Bangalore with verified agents.',
+      'A property marketplace to buy, sell and rent plots, apartments, villas and commercial spaces across Bangalore with verified agents.',
     tone: '#0c1a3d',
     url: 'https://homecaptain.in/',
     deliverables: ['Web Application', 'Property Listings', 'UI / UX Design'],
@@ -251,7 +251,7 @@ export const projects: Project[] = [
     industry: 'Food & Spices',
     discipline: 'E-commerce · Web & Mobile App',
     summary:
-      'An online storefront and mobile app for a masala and fresh-flour brand\'s product catalogue, category filters, search and cart built for everyday ordering.',
+      'An online storefront and mobile app for a custom-masala and fresh-flour brand\'s product catalogue, category filters, search and cart built for everyday ordering.',
     tone: '#3a1606',
     url: 'https://girani.in/',
     playStore: 'https://play.google.com/store/apps/details?id=com.girani.user&hl=en_IN',
@@ -335,7 +335,7 @@ export const projects: Project[] = [
     industry: 'Education & EdTech',
     discipline: 'Ed-Tech Platform',
     summary:
-      'A self learning platform for KAS and IAS aspirants with a study material shop, downloadable resources and a news feed for exam preparation.',
+      'A self learning platform for KAS and IAS aspirants with a study material shop, downloadable resources and a news feed for exam preparation (LMS).',
     tone: '#06123a',
     url: 'https://swaadhyay.com/',
     deliverables: ['Web Application', 'E-commerce', 'UI / UX Design'],

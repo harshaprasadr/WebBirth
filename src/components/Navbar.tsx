@@ -1,10 +1,10 @@
 import { useEffect, useRef, useState } from 'react'
 import { useLocation } from 'react-router'
 import { AnimatePresence, motion } from 'framer-motion'
-import { navItems, company, socials } from '@/data/site'
+import { navItems, socials } from '@/data/site'
 import { cn } from '@/lib/cn'
 import { ScrollTrigger } from '@/lib/gsap'
-import { useLocalTime } from '@/hooks/useLocalTime'
+
 import { Magnetic } from './Magnetic'
 import { TransitionLink, usePageTransition } from './PageTransition'
 import { useSmoothScroll } from './SmoothScroll'
@@ -103,7 +103,7 @@ export function Navbar() {
   const location = useLocation()
   const { go, introDone } = usePageTransition()
   const { stop, start } = useSmoothScroll()
-  const time = useLocalTime(company.timezone)
+
   const [dark, setDark] = useState(false)
   const [hidden, setHidden] = useState(false)
   const [scrolled, setScrolled] = useState(false)
@@ -281,12 +281,6 @@ export function Navbar() {
             })}
           </ul>
 
-          <div className="hidden items-center gap-6 lg:flex">
-            <span className="type-meta tabular-nums opacity-50">
-              BLR {time}
-            </span>
-            <Availability />
-          </div>
 
           <button
             type="button"
@@ -338,11 +332,11 @@ export function Navbar() {
             </div>
 
             <nav aria-label="Mobile" className="gutter relative flex flex-1 flex-col pt-[4.75rem]">
-              <ul className="flex flex-1 flex-col justify-center py-2">
+              <ul className="flex flex-1 flex-col justify-center py-1">
                 {navItems.map((item, i) => {
                   const current = active === item.id
                   return (
-                    <li key={item.id} className="flex max-h-[7.5rem] min-h-[3.75rem] flex-1 items-center border-b border-white/10 first:border-t">
+                    <li key={item.id} className="flex max-h-[6rem] min-h-[3rem] flex-1 items-center border-b border-white/10 first:border-t">
                       <span className="block w-full overflow-clip">
                         <motion.a
                           href={item.to}
@@ -352,10 +346,10 @@ export function Navbar() {
                           }}
                           aria-current={current ? 'true' : undefined}
                           aria-label={item.label}
-                          className="group flex min-h-14 items-center gap-4"
+                          className="group flex min-h-12 items-center gap-4"
                           exit={{ y: '-110%', transition: { duration: 0.35, ease: [0.76, 0, 0.24, 1] } }}
                         >
-                          <span aria-hidden="true" className="relative block flex-1 overflow-y-clip text-[min(10vw,7svh)] leading-[1.02]">
+                          <span aria-hidden="true" className="relative block flex-1 overflow-y-clip text-[min(8.5vw,5.5svh)] leading-[1.02]">
                             {/* resting label: sans (or italic serif when current), letters flip in */}
                             <span
                               className={cn(
@@ -398,7 +392,7 @@ export function Navbar() {
             </nav>
 
             <motion.div
-              className="gutter relative flex flex-col gap-4 pb-[max(1.25rem,env(safe-area-inset-bottom))] pt-4"
+              className="gutter relative flex flex-col gap-3 pb-[max(1rem,env(safe-area-inset-bottom))] pt-3"
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0, transition: { delay: 0.55, duration: 0.7, ease: [0.19, 1, 0.22, 1] } }}
               exit={{ opacity: 0, transition: { duration: 0.2 } }}
@@ -415,17 +409,6 @@ export function Navbar() {
               </button>
 
               <div className="flex items-center justify-between gap-3 border-t border-white/10 pt-4">
-                <a href={`mailto:${company.email}`} className="flex min-h-11 min-w-0 items-center truncate text-base font-medium tracking-tight">
-                  {company.email}
-                </a>
-                <span className="type-meta flex shrink-0 items-center gap-2 text-paper/60">
-                  <span className="pulse-dot size-[7px] rounded-full bg-green-500" aria-hidden="true" />
-                  Available
-                </span>
-              </div>
-
-              <div className="flex items-center justify-between gap-3">
-                <span className="type-meta shrink-0 tabular-nums text-paper/40 max-[359px]:hidden">BLR {time}</span>
                 <ul className="flex items-center gap-1.5 min-[380px]:gap-2 max-[359px]:w-full max-[359px]:justify-between" aria-label="Social links">
                   {socials.map((s) => {
                     const Icon = SOCIAL_ICONS[s.label]

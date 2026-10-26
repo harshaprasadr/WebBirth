@@ -25,9 +25,8 @@ export function ProjectShowcase() {
           id="work-title"
           index="01"
           label="Projects"
-          aside="Since 2020"
           title={['Selected', 'Work']}
-          intro="Digital products, platforms and experiences built by WebBirth — shown live, as they run today."
+          intro="Digital products, platforms and experiences built by WebBirth - shown live, as they run today."
           titleClassName="uppercase"
         />
       </div>
@@ -55,8 +54,6 @@ function ViewAllWork() {
       <div className="gutter">
         <div className="type-meta flex items-center gap-4 text-muted">
           <span data-reveal="fade">Index — Projects</span>
-          <span className="flex-1" aria-hidden="true" />
-          <span data-reveal="fade">Since 2020</span>
         </div>
 
         <div className="mt-8 flex flex-col gap-6 sm:mt-12 sm:flex-row sm:items-end sm:justify-between">
